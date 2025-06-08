@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import Logo from "./Logo";
 
 const NavBar = () => {
@@ -21,7 +21,7 @@ const NavBar = () => {
       <div className="navbar w-11/12 mx-auto py-5">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className=" lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -49,12 +49,12 @@ const NavBar = () => {
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-xl gap-5 text-blue-950">
+          <ul className="menu menu-horizontal px-1 text-xl gap-5">
             {navBarLinks}
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <Link to={"/login"} className="btn btn-primary">Login</Link>
         </div>
       </div>
     </div>
