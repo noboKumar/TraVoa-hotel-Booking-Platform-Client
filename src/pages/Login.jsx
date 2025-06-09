@@ -3,10 +3,23 @@ import loginAnimation from "../assets/Animation - 1749406752221.json";
 import Lottie from "lottie-react";
 import { Link } from "react-router";
 import { Helmet } from "react-helmet";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
+  const { logInUser } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    logInUser(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="my-20">
@@ -40,7 +53,12 @@ const Login = () => {
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </g>
               </svg>
-              <input type="email" placeholder="mail@site.com" required />
+              <input
+                name="email"
+                type="email"
+                placeholder="mail@site.com"
+                required
+              />
             </label>
             {/* password */}
             <label className="w-full input validator border-0 border-b-2 rounded-none">
@@ -65,7 +83,12 @@ const Login = () => {
                   ></circle>
                 </g>
               </svg>
-              <input type="password" required placeholder="Password" />
+              <input
+                name="password"
+                type="password"
+                required
+                placeholder="Password"
+              />
             </label>
             <div>
               <a className="link link-hover">Forgot password?</a>

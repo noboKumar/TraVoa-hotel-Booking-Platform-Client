@@ -68,6 +68,13 @@ const NavBar = () => {
         </div>
         <div className="navbar-end gap-4">
           <h1 className="text-xl">{user?.displayName}</h1>
+          {user && (
+            <div className="avatar">
+              <div className="w-15 rounded-full">
+                <img src={user?.photoURL} />
+              </div>
+            </div>
+          )}
           {user ? (
             <button onClick={handleLogOut} className="btn btn-primary">
               Log Out
