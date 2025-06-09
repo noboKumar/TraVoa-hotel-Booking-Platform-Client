@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import { Helmet } from "react-helmet";
 
 const Rooms = () => {
-    return (
-        <div>
-            Rooms
-        </div>
-    );
+  return (
+    <div>
+      <Helmet>
+        <title>TraVoa | Rooms</title>
+      </Helmet>
+      Rooms
+    </div>
+  );
 };
 
 export default Rooms;

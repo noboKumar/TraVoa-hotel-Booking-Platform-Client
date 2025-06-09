@@ -17,8 +17,8 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className=" bg-base-200 shadow-sm">
-      <div className="navbar w-11/12 mx-auto py-5">
+    <div className="bg-base-200 shadow-sm">
+      <div className="navbar w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className=" lg:hidden">
@@ -44,9 +44,9 @@ const NavBar = () => {
               {navBarLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">
+          <Link to={"/"}>
             <Logo></Logo>
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-xl gap-5">
@@ -54,7 +54,9 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to={"/login"} className="btn btn-primary">Login</Link>
+          <Link to={"/login"} className="btn btn-primary">
+            Login
+          </Link>
         </div>
       </div>
     </div>

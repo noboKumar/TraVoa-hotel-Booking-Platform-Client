@@ -1,11 +1,15 @@
 import React from "react";
-import loginAnimation from "../assets/Animation - 1749405532540.json";
+import loginAnimation from "../assets/Animation - 1749406752221.json";
 import Lottie from "lottie-react";
 import { Link } from "react-router";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   return (
     <div className="my-20">
+      <Helmet>
+        <title>TraVoa | login now</title>
+      </Helmet>
       <div className="w-full shrink-0 md:flex items-center md:gap-10 justify-center">
         <Lottie
           className="md:w-90 md:mx-0 w-50 mx-auto"
