@@ -5,6 +5,9 @@ import { Link } from "react-router";
 import { Helmet } from "react-helmet";
 
 const Login = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="my-20">
       <Helmet>
@@ -18,7 +21,7 @@ const Login = () => {
         <div className="space-y-5 w-90">
           <h1 className="md:text-4xl text-xl font-bold">Login now!</h1>
           {/* login form */}
-          <form className="space-y-5">
+          <form onSubmit={handleLogin} className="space-y-5">
             {/* email */}
             <label className="w-full input validator border-0 border-b-2 rounded-none">
               <svg

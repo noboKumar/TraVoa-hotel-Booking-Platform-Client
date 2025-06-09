@@ -5,6 +5,15 @@ import { Link } from "react-router";
 import { Helmet } from "react-helmet";
 
 const Register = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const { name, photoURL, email, password } = Object.fromEntries(
+      formData.entries()
+    );
+    console.log(name, photoURL, email, password);
+  };
   return (
     <div className="my-20">
       <Helmet>
@@ -18,7 +27,7 @@ const Register = () => {
         <div className="space-y-5 w-90">
           <h1 className="md:text-4xl text-xl font-bold">Please Register</h1>
           {/* register form */}
-          <form className="space-y-5">
+          <form onSubmit={handleRegister} className="space-y-5">
             {/* name */}
             <label className="w-full input validator border-0 border-b-2 rounded-none">
               <svg
@@ -38,12 +47,13 @@ const Register = () => {
                 </g>
               </svg>
               <input
+                name="name"
                 type="text"
                 required
                 placeholder="Username"
                 pattern="[A-Za-z][A-Za-z0-9\-]*"
-                minlength="3"
-                maxlength="30"
+                minLength="3"
+                maxLength="30"
                 title="Only letters, numbers or dash"
               />
             </label>
@@ -65,7 +75,7 @@ const Register = () => {
                   <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                 </g>
               </svg>
-              <input type="url" placeholder="photo URL" required />
+              <input name="photoURL" type="url" placeholder="photo URL" />
             </label>
             {/* email */}
             <label className="w-full input validator border-0 border-b-2 rounded-none">
@@ -85,7 +95,12 @@ const Register = () => {
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </g>
               </svg>
-              <input type="email" placeholder="mail@site.com" required />
+              <input
+                name="email"
+                type="email"
+                placeholder="mail@site.com"
+                required
+              />
             </label>
             {/* password */}
             <label className="w-full input validator border-0 border-b-2 rounded-none">
@@ -110,7 +125,12 @@ const Register = () => {
                   ></circle>
                 </g>
               </svg>
-              <input type="password" required placeholder="Password" />
+              <input
+                name="password"
+                type="password"
+                required
+                placeholder="Password"
+              />
             </label>
             <button className="btn btn-primary mt-4">Register</button>
           </form>
