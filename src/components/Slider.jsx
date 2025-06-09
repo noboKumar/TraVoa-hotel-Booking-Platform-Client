@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "motion/react";
 import slider1 from "../assets/slider-1.jpg";
 import slider2 from "../assets/slider-2.webp";
 import slider3 from "../assets/slider-3.jpg";
@@ -40,9 +41,11 @@ const sliderData = [
 ];
 
 const Slider = () => {
+  const [activeSlider, setActiveSlider] = useState(0);
   return (
     <div className="relative md:w-full">
       <Swiper
+        onSlideChange={(swiper) => setActiveSlider(swiper.realIndex)}
         className="mySwiper"
         modules={[Navigation, Pagination, A11y, Autoplay, EffectCoverflow]}
         effect={"coverflow"}
@@ -65,23 +68,40 @@ const Slider = () => {
       >
         {sliderData.map((slider, index) => (
           <SwiperSlide key={index}>
-            <img
-              className="w-full h-[300px] md:h-[700px] rounded-2xl object-cover"
-              src={slider.image}
-              alt="slider images"
-            />
-            <div className="absolute top-0 left-0 w-full h-full bg-black/60 rounded-2xl"></div>
-            <div className="absolute top-20 left-5 md:top-3/6 md:left-20 z-10 text-white w-4/6 md:w-6/12 space-y-2 md:space-y-5 text-shadow-2xs">
-              <h1 className="md:text-4xl text-2xl font-bold">{slider.title}</h1>
-              <p className="md:text-xl line-clamp-3 md:line-clamp-5">
-                {slider.description}
-              </p>
-              <Link
-                to={"/rooms"}
-                className="btn bg-secondary border-none shadow text-white"
+            <div className="relative">
+              {/* slider image */}
+              <img
+                className="w-full h-[300px] md:h-[700px] rounded-2xl object-cover"
+                src={slider.image}
+                alt="slider images"
+              />
+              {/* black overlay */}
+              <div className="absolute inset-0  bg-black/60 rounded-2xl"></div>
+
+              {/* animation div */}
+              <motion.div
+                key={activeSlider}
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="absolute inset-0 flex items-center justify-center z-10 text-white px-4 text-center"
               >
-                {slider.buttonText}
-              </Link>
+                {/* text and buttons */}
+                <div className="w-full md:w-2/3 lg:w-1/2 space-y-2 md:space-y-5">
+                  <h1 className="md:text-5xl text-2xl font-bold poppins">
+                    {slider.title}
+                  </h1>
+                  <p className="md:text-xl line-clamp-3 md:line-clamp-5">
+                    {slider.description}
+                  </p>
+                  <Link
+                    to={"/rooms"}
+                    className="btn bg-secondary border-none shadow text-white"
+                  >
+                    {slider.buttonText}
+                  </Link>
+                </div>
+              </motion.div>
             </div>
           </SwiperSlide>
         ))}

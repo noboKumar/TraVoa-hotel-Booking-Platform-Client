@@ -7,7 +7,7 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { logInUser, googleLogin, setUser } = useAuth();
+  const { logInUser, googleLogin } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -20,7 +20,7 @@ const Login = () => {
         Swal.fire({
           icon: "success",
           title: "Logged In Successfully",
-          text: `Hello, ${result.user?.displayName}`,
+          text: `Welcome Back, ${result.user?.displayName}`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -40,16 +40,10 @@ const Login = () => {
   const handleGoogleLogIn = () => {
     googleLogin()
       .then((result) => {
-        const userData = result.user;
-        setUser({
-          ...userData,
-          displayName: userData.displayName,
-          photoURL: userData.photoURL,
-        });
         Swal.fire({
           icon: "success",
           title: "Account Created Successfully",
-          text: `Hello, ${userData?.displayName}`,
+          text: `Hello, ${result.user?.displayName}`,
           showConfirmButton: false,
           timer: 1500,
         });

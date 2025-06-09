@@ -50,16 +50,10 @@ const Register = () => {
   const handleGoogleLogIn = () => {
     googleLogin()
       .then((result) => {
-        const userData = result.user;
-        setUser({
-          ...userData,
-          displayName: userData.displayName,
-          photoURL: userData.photoURL,
-        });
         Swal.fire({
           icon: "success",
           title: "Account Created Successfully",
-          text: `Hello, ${userData?.displayName}`,
+          text: `Welcome, ${result.user?.displayName}`,
           showConfirmButton: false,
           timer: 1500,
         });
