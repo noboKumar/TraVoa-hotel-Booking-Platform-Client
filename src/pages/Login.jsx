@@ -46,9 +46,23 @@ const Login = () => {
           displayName: userData.displayName,
           photoURL: userData.photoURL,
         });
+        Swal.fire({
+          icon: "success",
+          title: "Account Created Successfully",
+          text: `Hello, ${userData?.displayName}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((err) => {
         console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oh No! an Error occurred",
+          text: `${err.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
   return (

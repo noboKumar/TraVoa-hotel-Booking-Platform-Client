@@ -82,10 +82,9 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-4">
-          <h1 className="text-xl">{user?.displayName}</h1>
           {user && (
-            <div className="avatar">
-              <div className="w-15 rounded-full">
+            <div className="avatar tooltip tooltip-bottom" data-tip={`${user?.displayName}`}>
+              <div className="w-12 md:w-15 rounded-full">
                 <img src={user?.photoURL} />
               </div>
             </div>
