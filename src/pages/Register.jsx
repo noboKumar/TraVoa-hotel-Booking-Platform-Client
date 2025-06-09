@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import registerAnimation from "../assets/Animation - 1749405532540.json";
 import Lottie from "lottie-react";
 import { Link } from "react-router";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, updateUser, setUser, googleLogin } = useAuth();
+  const [passwordError, setPasswordError] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -16,6 +17,14 @@ const Register = () => {
     const { name, photo, email, password } = Object.fromEntries(
       formData.entries()
     );
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (passwordRegex.test(password) === false) {
+      setPasswordError(
+        "Password Must Contain at least one uppercase letter, least one lowercase letter, Be at least 6 characters long"
+      );
+      return;
+    }
 
     createUser(email, password)
       .then((result) => {
@@ -30,6 +39,8 @@ const Register = () => {
               showConfirmButton: false,
               timer: 1500,
             });
+            setPasswordError("");
+            form.reset();
           })
           .catch((err) => {
             console.log(err);
@@ -187,6 +198,7 @@ const Register = () => {
                 placeholder="Password"
               />
             </label>
+            <p className="text-error text-sm">{passwordError}</p>
             <button className="btn btn-primary mt-4">Register</button>
           </form>
         </div>

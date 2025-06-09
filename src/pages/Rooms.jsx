@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { fetchRoomData } from "../API/roomsApi";
+import RoomsCards from "../components/RoomsCards";
 
 const Rooms = () => {
   const [roomData, setRoomData] = useState([]);
@@ -17,6 +18,9 @@ const Rooms = () => {
       <Helmet>
         <title>TraVoa | Rooms</title>
       </Helmet>
+      {roomData.map((data) => (
+        <RoomsCards key={data._id} data={data}></RoomsCards>
+      ))}
     </div>
   );
 };
