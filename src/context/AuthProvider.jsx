@@ -43,11 +43,13 @@ const AuthProvider = ({ children }) => {
 
   // log in user
   const logInUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // google sign in
   const googleLogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, provider);
   };
 
