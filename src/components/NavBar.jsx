@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 import Loading from "./Loading";
 
 const NavBar = () => {
-  const { user } = useAuth();
+  const { user, logOutUser } = useAuth();
 
   const navBarLinks = (
     <>
@@ -20,6 +20,14 @@ const NavBar = () => {
       </li>
     </>
   );
+
+  const handleLogOut = () => {
+    logOutUser()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="bg-base-200 shadow-sm">
@@ -61,7 +69,9 @@ const NavBar = () => {
         <div className="navbar-end gap-4">
           <h1 className="text-xl">{user?.displayName}</h1>
           {user ? (
-            <button className="btn btn-primary">Log Out</button>
+            <button onClick={handleLogOut} className="btn btn-primary">
+              Log Out
+            </button>
           ) : (
             <Link to={"/login"} className="btn btn-primary">
               Login
