@@ -3,16 +3,34 @@ import registerAnimation from "../assets/Animation - 1749405532540.json";
 import Lottie from "lottie-react";
 import { Link } from "react-router";
 import { Helmet } from "react-helmet";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
+  const { createUser, updateUser, setUser } = useAuth();
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const { name, photoURL, email, password } = Object.fromEntries(
+    const { name, photo, email, password } = Object.fromEntries(
       formData.entries()
     );
-    console.log(name, photoURL, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const userData = result.user;
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...userData, displayName: name, photoURL: photo });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        console.log(result.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="my-20">
@@ -75,7 +93,7 @@ const Register = () => {
                   <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                 </g>
               </svg>
-              <input name="photoURL" type="url" placeholder="photo URL" />
+              <input name="photo" type="url" placeholder="photo URL" />
             </label>
             {/* email */}
             <label className="w-full input validator border-0 border-b-2 rounded-none">
