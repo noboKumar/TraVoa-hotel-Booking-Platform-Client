@@ -16,9 +16,11 @@ const NavBar = () => {
       <li>
         <NavLink to={"/rooms"}>Rooms</NavLink>
       </li>
-      <li>
-        <NavLink to={"/myBookings"}>My Bookings</NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to={"/myBookings"}>My Bookings</NavLink>
+        </li>
+      )}
     </>
   );
 
@@ -83,7 +85,10 @@ const NavBar = () => {
         </div>
         <div className="navbar-end gap-4">
           {user && (
-            <div className="avatar tooltip tooltip-bottom" data-tip={`${user?.displayName}`}>
+            <div
+              className="avatar tooltip tooltip-bottom"
+              data-tip={`${user?.displayName}`}
+            >
               <div className="w-12 md:w-15 rounded-full">
                 <img src={user?.photoURL} />
               </div>

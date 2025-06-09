@@ -5,6 +5,7 @@ import Rooms from "../pages/Rooms";
 import MyBookings from "../pages/MyBookings";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PrivateRouter from "./privateRouter";
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +22,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myBookings",
-        Component: MyBookings,
+        element: (
+          <PrivateRouter>
+            <MyBookings></MyBookings>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/login",
