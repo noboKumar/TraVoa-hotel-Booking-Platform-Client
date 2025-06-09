@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import { Link } from "react-router";
 import { Helmet } from "react-helmet";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { logInUser } = useAuth();
@@ -16,9 +17,23 @@ const Login = () => {
     logInUser(email, password)
       .then((result) => {
         console.log(result);
+        Swal.fire({
+          icon: "success",
+          title: "Logged In Successfully",
+          text: `Hello, ${result.user?.displayName}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((err) => {
         console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oh No! an Error occurred",
+          text: `${err.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
   return (

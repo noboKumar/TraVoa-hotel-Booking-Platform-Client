@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import { Link } from "react-router";
 import { Helmet } from "react-helmet";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, updateUser, setUser } = useAuth();
@@ -22,6 +23,13 @@ const Register = () => {
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
             setUser({ ...userData, displayName: name, photoURL: photo });
+            Swal.fire({
+              icon: "success",
+              title: "Account Created Successfully",
+              text: `Hello, ${userData?.displayName}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
           })
           .catch((err) => {
             console.log(err);
@@ -30,6 +38,13 @@ const Register = () => {
       })
       .catch((err) => {
         console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oh No! an Error occurred",
+          text: `${err.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
   return (
@@ -69,7 +84,7 @@ const Register = () => {
                 type="text"
                 required
                 placeholder="Username"
-                pattern="[A-Za-z][A-Za-z0-9\-]*"
+                pattern="[A-Za-z][A-Za-z0-9\- ]*"
                 minLength="3"
                 maxLength="30"
                 title="Only letters, numbers or dash"

@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import Logo from "./Logo";
 import useAuth from "../hooks/useAuth";
 import Loading from "./Loading";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
   const { user, logOutUser } = useAuth();
@@ -23,9 +24,23 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     logOutUser()
-      .then(() => {})
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Logged Out Successfully",
+          text: `Bye, ${user?.displayName}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
       .catch((err) => {
-        console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oh No! an Error occurred",
+          text: `${err.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
 
