@@ -7,7 +7,7 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { logInUser } = useAuth();
+  const { logInUser, googleLogin, setUser } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -34,6 +34,21 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+      });
+  };
+
+  const handleGoogleLogIn = () => {
+    googleLogin()
+      .then((result) => {
+        const userData = result.user;
+        setUser({
+          ...userData,
+          displayName: userData.displayName,
+          photoURL: userData.photoURL,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
   return (
@@ -120,8 +135,11 @@ const Login = () => {
           </Link>
         </div>
         <div className="flex items-center gap-2">
-          <h1 className="text-xl">or login with</h1>
-          <button className="btn bg-white text-black border-[#e5e5e5]">
+          <h1 className="text-xl">Or login with</h1>
+          <button
+            onClick={handleGoogleLogIn}
+            className="btn bg-white text-black border-[#e5e5e5]"
+          >
             <svg
               aria-label="Google logo"
               width="16"

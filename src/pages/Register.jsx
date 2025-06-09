@@ -7,7 +7,7 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser, updateUser, setUser } = useAuth();
+  const { createUser, updateUser, setUser, googleLogin } = useAuth();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -34,7 +34,6 @@ const Register = () => {
           .catch((err) => {
             console.log(err);
           });
-        console.log(result.user);
       })
       .catch((err) => {
         console.log(err);
@@ -45,6 +44,21 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+      });
+  };
+
+  const handleGoogleLogIn = () => {
+    googleLogin()
+      .then((result) => {
+        const userData = result.user;
+        setUser({
+          ...userData,
+          displayName: userData.displayName,
+          photoURL: userData.photoURL,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
   return (
@@ -180,8 +194,11 @@ const Register = () => {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <h1 className="text-xl">or continue with</h1>
-          <button className="btn bg-white text-black border-[#e5e5e5]">
+          <h1 className="text-xl">Or continue with</h1>
+          <button
+            onClick={handleGoogleLogIn}
+            className="btn bg-white text-black border-[#e5e5e5]"
+          >
             <svg
               aria-label="Google logo"
               width="16"
