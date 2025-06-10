@@ -3,18 +3,18 @@ import { useLoaderData } from "react-router";
 import RoomFacility from "../components/RoomFacility";
 import { TbCurrencyTaka } from "react-icons/tb";
 import ReadOnlyStars from "../components/ReadOnlyStars";
+import BookNowModal from "../components/BookNowModal";
 
 const RoomDetails = () => {
   const { data } = useLoaderData();
-  console.log(data);
-  const { image, available, title, description, price, reviews } = data;
+  const { image, available, title, description, price, reviews, _id } = data;
 
   return (
     <div className="space-y-3">
       <img
         className="w-full md:h-[500px] object-cover object-center rounded-2xl shadow-sm"
         src={image}
-        alt=""
+        alt="room image"
       />
       <h1 className="text-3xl text-primary poppins font-semibold">
         {title}{" "}
@@ -35,7 +35,19 @@ const RoomDetails = () => {
         <span className="text-2xl font-semibold poppins">Description:</span>
         {description}
       </p>
-      <button className="btn btn-primary">Book Now</button>
+      <button
+        onClick={() => document.getElementById("my_modal").showModal()}
+        className="btn btn-primary"
+      >
+        Book Now
+      </button>
+      <BookNowModal
+        title={title}
+        description={description}
+        price={price}
+        available={available}
+        _id={_id}
+      ></BookNowModal>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import PrivateRouter from "./PrivateRouter";
 import ErrorPage from "../pages/ErrorPage";
 import RoomDetails from "../pages/RoomDetails";
 import { apiClient } from "../API/apiClient";
+import Loading from "../components/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +48,7 @@ export const router = createBrowserRouter([
         path: "/rooms/:id",
         Component: RoomDetails,
         loader: ({ params }) => apiClient.get(`/rooms/${params.id}`),
+        hydrateFallbackElement: <Loading></Loading>
       },
     ],
   },
