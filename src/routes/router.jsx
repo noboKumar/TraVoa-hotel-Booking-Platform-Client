@@ -5,8 +5,10 @@ import Rooms from "../pages/Rooms";
 import MyBookings from "../pages/MyBookings";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import PrivateRouter from "./privateRouter";
+import PrivateRouter from "./PrivateRouter";
 import ErrorPage from "../pages/ErrorPage";
+import RoomDetails from "../pages/RoomDetails";
+import { apiClient } from "../API/apiClient";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +18,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: "*",
+        Component: ErrorPage,
       },
       {
         path: "/rooms",
@@ -38,8 +44,9 @@ export const router = createBrowserRouter([
         Component: Register,
       },
       {
-        path: "*",
-        Component: ErrorPage,
+        path: "/rooms/:id",
+        Component: RoomDetails,
+        loader: ({ params }) => apiClient.get(`/rooms/${params.id}`),
       },
     ],
   },

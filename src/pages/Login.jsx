@@ -43,8 +43,8 @@ const Login = () => {
       .then((result) => {
         Swal.fire({
           icon: "success",
-          title: "Account Created Successfully",
-          text: `Hello, ${result.user?.displayName}`,
+          title: "Logged in Successfully",
+          text: `welcome back, ${result.user?.displayName}`,
           showConfirmButton: false,
           timer: 1500,
         });
