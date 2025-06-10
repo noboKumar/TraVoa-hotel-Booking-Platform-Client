@@ -5,6 +5,7 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import ReadOnlyStars from "../components/ReadOnlyStars";
 import BookNowModal from "../components/BookNowModal";
 import { MdKeyboardBackspace } from "react-icons/md";
+import ReviewCard from "../components/ReviewCard";
 
 const RoomDetails = () => {
   const { data } = useLoaderData();
@@ -47,6 +48,21 @@ const RoomDetails = () => {
       >
         Book Now
       </button>
+      <div className="space-y-2">
+        <h1 className="text-4xl font-semibold poppins">Reviews:</h1>
+        <div>
+          {reviews.length ? (
+            reviews.map((review, index) => (
+              <ReviewCard key={index} review={review}></ReviewCard>
+            ))
+          ) : (
+            <h1 className="text-xl bg-gray-100 shadow-sm w-fit rounded-2xl py-2 px-4">
+              "No reviews yet be the first to share your thoughts and help
+              others discover something great!"
+            </h1>
+          )}
+        </div>
+      </div>
       <BookNowModal
         title={title}
         description={description}

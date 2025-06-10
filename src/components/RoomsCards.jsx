@@ -11,7 +11,7 @@ const RoomsCards = ({ data }) => {
         <Link to={`/rooms/${_id}`}>
           <figure>
             <img
-              className="h-[300px] w-full object-cover"
+              className="h-[300px] w-full object-cover rounded-t-xl"
               src={image}
               alt="rooms photo"
             />

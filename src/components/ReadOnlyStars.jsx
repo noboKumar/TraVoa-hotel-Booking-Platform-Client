@@ -32,7 +32,7 @@ const ReadOnlyStars = () => {
         name="rating-2"
         className="mask mask-star-2 bg-orange-400"
         aria-label="5 star"
-        defaultChecked
+        aria-current="true"
       />
     </div>
   );
