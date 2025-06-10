@@ -46,7 +46,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="bg-base-200 shadow-sm">
+    <div className="bg-base-200 shadow-sm sticky top-0 lg:top-2 z-10 lg:w-10/12 mx-auto lg:rounded-r-full lg:rounded-l-full lg:my-5">
       <div className="navbar w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -82,7 +82,7 @@ const NavBar = () => {
             {navBarLinks}
           </ul>
         </div>
-        <div className="navbar-end gap-4">
+        <div className="navbar-end gap-4 z-10">
           {user && (
             <div
               className="avatar tooltip tooltip-bottom"
