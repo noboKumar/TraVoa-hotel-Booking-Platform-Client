@@ -5,15 +5,25 @@ import { apiClient } from "../API/apiClient";
 
 const BookNowModal = ({ title, description, price, available, _id }) => {
   const [selectedDate, setSelectedDate] = useState();
+  const [error, setError] = useState("");
   const { user } = useAuth();
   const dateData = selectedDate?.toLocaleDateString("en-GB");
   const userData = user?.email;
-  const bookedData = { bookedDate: dateData, bookedUser: userData, available:false };
+  const bookedData = {
+    bookedDate: dateData,
+    bookedUser: userData,
+    available: false,
+  };
 
   const bookNow = (e) => {
     e.preventDefault();
-    console.log(bookedData);
-    
+    if (!selectedDate) {
+      setError("Please select a date");
+      return;
+    } else {
+      setError("");
+    }
+
     apiClient
       .patch(`/rooms/${_id}`, bookedData)
       .then((res) => {
@@ -43,6 +53,7 @@ const BookNowModal = ({ title, description, price, available, _id }) => {
                   selectedDate={selectedDate}
                   setSelectedDate={setSelectedDate}
                 ></DatePicker>
+                <p className="text-error text-sm">{error}</p>
                 <p className="py-4 text-xl">
                   <span className="font-semibold">Price:</span>
                   {price}/night
