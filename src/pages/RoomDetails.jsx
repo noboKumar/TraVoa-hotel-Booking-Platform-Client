@@ -1,16 +1,22 @@
 import React from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import RoomFacility from "../components/RoomFacility";
 import { TbCurrencyTaka } from "react-icons/tb";
 import ReadOnlyStars from "../components/ReadOnlyStars";
 import BookNowModal from "../components/BookNowModal";
+import { MdKeyboardBackspace } from "react-icons/md";
 
 const RoomDetails = () => {
   const { data } = useLoaderData();
   const { image, available, title, description, price, reviews, _id } = data;
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 relative">
+      <Link to={"/rooms"}>
+        <div className="md:text-5xl text-3xl absolute top-5 left-5 cursor-pointer">
+          <MdKeyboardBackspace className="border-2 rounded-full bg-base-200" />
+        </div>
+      </Link>
       <img
         className="w-full md:h-[500px] object-cover object-center rounded-2xl shadow-sm"
         src={image}
