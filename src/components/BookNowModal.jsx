@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import DatePicker from "./DatePicker";
 import useAuth from "../hooks/useAuth";
+import { apiClient } from "../API/apiClient";
 
 const BookNowModal = ({ title, description, price, available, _id }) => {
   const [selectedDate, setSelectedDate] = useState();
   const { user } = useAuth();
   const dateData = selectedDate?.toLocaleDateString("en-GB");
   const userData = user?.email;
+  const bookedData = { bookedDate: dateData, bookedUser: userData, available:false };
+
   const bookNow = (e) => {
     e.preventDefault();
-    console.log("submitted", dateData, userData, _id);
+    console.log(bookedData);
+    
+    apiClient
+      .patch(`/rooms/${_id}`, bookedData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
   return (
     <>
       {available ? (
