@@ -25,7 +25,7 @@ const BookNowModal = ({ title, description, price, available, _id }) => {
     }
 
     apiClient
-      .patch(`/rooms/${_id}`, bookedData)
+      .patch(`/bookedRooms/${_id}`, bookedData)
       .then((res) => {
         console.log(res);
       })

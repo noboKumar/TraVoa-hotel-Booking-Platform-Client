@@ -5,7 +5,6 @@ import { FaStarHalfAlt } from "react-icons/fa";
 import { ImStarFull } from "react-icons/im";
 
 const ReviewCard = ({ review }) => {
-  console.log(review);
   const { image, reviewerName, comment, rating } = review;
   return (
     <div className="border-2 bg-gray-100 border-gray-300 shadow-sm rounded-2xl my-5 p-5 space-y-2">
