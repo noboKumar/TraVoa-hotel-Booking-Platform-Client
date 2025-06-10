@@ -7,8 +7,8 @@ const RoomsCards = ({ data }) => {
   const { image, available, title, description, price, reviews, _id } = data;
   return (
     <>
-      <Link to={`/rooms/${_id}`}>
-        <div className="card bg-base-100 shadow-sm cursor-pointer transition-transform duration-300 hover:scale-105">
+      <div className="card bg-base-100 shadow-sm cursor-pointer transition-transform duration-300 hover:scale-105">
+        <Link to={`/rooms/${_id}`}>
           <figure>
             <img
               className="h-[300px] w-full object-cover"
@@ -23,7 +23,7 @@ const RoomsCards = ({ data }) => {
                 {available ? "available" : "unavailable"}
               </div>
             </h2>
-            <p>{description}</p>
+            <p className="line-clamp-3">{description}</p>
             <div className="flex items-center text-xl text-accent">
               <TbCurrencyTaka size={25} />
               <span className="text-secondary">{price}</span>/night
@@ -33,8 +33,8 @@ const RoomsCards = ({ data }) => {
               <span>Total Review: {reviews.length}</span>
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </>
   );
 };
