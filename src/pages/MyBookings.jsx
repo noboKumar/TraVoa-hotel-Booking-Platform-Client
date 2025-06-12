@@ -9,9 +9,10 @@ const MyBookings = () => {
   const { user } = useAuth();
   const [myBookingsData, setMyBookingsData] = useState([]);
   const email = user.email;
+  const token = user.accessToken;
 
   useEffect(() => {
-    fetchMyBookingsData(email)
+    fetchMyBookingsData(email, token)
       .then((data) => {
         console.log(data);
         setMyBookingsData(data);
@@ -19,7 +20,7 @@ const MyBookings = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [email]);
+  }, [email, token]);
   return (
     <div>
       <Helmet>
