@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import Slider from "../components/Slider";
+import FeaturedRooms from "../components/FeaturedRooms";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
         <title>TraVoa</title>
       </Helmet>
       <Slider></Slider>
+      <FeaturedRooms></FeaturedRooms>
     </div>
   );
 };
