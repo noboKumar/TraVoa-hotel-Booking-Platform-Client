@@ -1,15 +1,26 @@
 import React from "react";
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 import RoomFacility from "../components/RoomFacility";
 import { TbCurrencyTaka } from "react-icons/tb";
 import ReadOnlyStars from "../components/ReadOnlyStars";
 import BookNowModal from "../components/BookNowModal";
 import { MdKeyboardBackspace } from "react-icons/md";
 import ReviewCard from "../components/ReviewCard";
+import useAuth from "../hooks/useAuth";
 
 const RoomDetails = () => {
+  const { user } = useAuth();
   const { data } = useLoaderData();
+  const navigate = useNavigate();
   const { image, available, title, description, price, reviews, _id } = data;
+
+  const handleBookNow = () => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+    document.getElementById("my_modal").showModal();
+  };
 
   return (
     <div className="space-y-3 relative">
@@ -42,10 +53,7 @@ const RoomDetails = () => {
         <span className="text-2xl font-semibold poppins">Description:</span>
         {description}
       </p>
-      <button
-        onClick={() => document.getElementById("my_modal").showModal()}
-        className="btn btn-primary"
-      >
+      <button onClick={handleBookNow} className="btn btn-primary">
         Book Now
       </button>
       <div className="space-y-2">
