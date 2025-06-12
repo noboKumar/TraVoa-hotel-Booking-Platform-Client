@@ -4,6 +4,7 @@ import PageTitle from "../components/PageTitle";
 import { FaHotel } from "react-icons/fa6";
 import useAuth from "../hooks/useAuth";
 import { fetchMyBookingsData } from "../API/myBookings";
+import MyBookingsTable from "./MyBookingsTable";
 
 const MyBookings = () => {
   const { user } = useAuth();
@@ -21,16 +22,31 @@ const MyBookings = () => {
         console.log(err);
       });
   }, [email, token]);
+  console.log(myBookingsData);
+
   return (
     <div>
       <Helmet>
         <title>TraVoa | My Bookings</title>
       </Helmet>
       <PageTitle title={"My Bookings"} logo={<FaHotel />}></PageTitle>
-
       <div>
-        booked rooms:
-        {myBookingsData.length}
+        <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-200 px-5 py-2">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Room</th>
+                <th>Price</th>
+                <th className="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {myBookingsData.map((data) => (
+                <MyBookingsTable key={data._id} data={data}></MyBookingsTable>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
