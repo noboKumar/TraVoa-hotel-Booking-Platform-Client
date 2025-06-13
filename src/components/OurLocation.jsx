@@ -9,13 +9,13 @@ const OurLocation = () => {
   return (
     <div>
       <PageTitle title={"Our Location"} logo={<IoLocationSharp />}></PageTitle>
-      <div className="flex items-center gap-5">
-        <div className="flex-1">
+      <div className="flex flex-col md:flex-row items-center gap-2 md:gap-5">
+        <div className="lg:flex-1 w-full h-[400px]">
           <MapContainer
             scrollWheelZoom={false}
             center={[23.7903, 90.4169]}
             zoom={13}
-            className="h-[400px] w-full rounded-2xl border border-gray-300"
+            className="h-full w-full rounded-2xl border border-gray-300 z-0"
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -27,15 +27,15 @@ const OurLocation = () => {
           </MapContainer>
         </div>
 
-        <div className="flex-1 text-center h-[400px] relative">
+        <div className="lg:flex-1 text-center h-[400px] w-full relative">
           <img
-            className="w-full h-[400px] object-cover object-top absolute rounded-2xl"
+            className="w-full h-full object-cover object-top absolute rounded-2xl"
             src={hotelImage}
             alt="hotel image"
           />
           <div className="absolute inset-0  bg-black/60 rounded-2xl"></div>
 
-          <div className="text-xl space-y-2 z-50 absolute text-white inset-0 top-1/5">
+          <div className="md:text-xl space-y-2 absolute text-white inset-0 top-1/5">
             <PageTitle title={"Contract Us"}></PageTitle>
             <h1>
               <span className="font-semibold">Address:</span> Plot 11, Road 130,

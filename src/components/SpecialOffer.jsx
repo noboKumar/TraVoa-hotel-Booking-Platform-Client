@@ -11,7 +11,7 @@ const SpecialOffer = () => {
         title={"Our Special Offers"}
         logo={<IoPricetags />}
       ></PageTitle>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {offerData.map((data) => (
           <SpecialOfferCard key={data.id} data={data}></SpecialOfferCard>
         ))}

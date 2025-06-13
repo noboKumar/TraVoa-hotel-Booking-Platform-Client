@@ -13,8 +13,8 @@ const SpecialOfferCard = ({ data }) => {
         alt={`${title}-image`}
       />
       <div className="px-5 py-5 space-y-5">
-        <h1 className="text-4xl marcellus">{title}</h1>
-        <div className="grid grid-cols-2">
+        <h1 className="text-3xl md:text-4xl marcellus">{title}</h1>
+        <div className="grid lg:grid-cols-2">
           {features.map((feature) => (
             <div className="flex items-center gap-2">
               <FaRegCheckCircle />
@@ -22,7 +22,7 @@ const SpecialOfferCard = ({ data }) => {
             </div>
           ))}
         </div>
-        <div className="flex gap-5 items-center">
+        <div className="flex flex-row gap-5 items-center">
           <h2 className="flex items-center text-xl line-through">
             <FaBangladeshiTakaSign />
             {previous_price} Tk.
