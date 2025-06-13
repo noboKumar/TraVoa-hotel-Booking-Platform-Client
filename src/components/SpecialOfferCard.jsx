@@ -1,6 +1,8 @@
 import React from "react";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import useImageLoader from "../hooks/useImageLoader";
+import SkeletonLoading from "./SkeletonLoading";
 
 const SpecialOfferCard = ({ data }) => {
   const {
@@ -11,16 +13,18 @@ const SpecialOfferCard = ({ data }) => {
     features,
     discount_rate,
   } = data;
-  console.log(data);
+  const { imageLoaded, onLoad } = useImageLoader();
   return (
     <div className="shadow-sm rounded-2xl ">
       <div className="relative">
+        {!imageLoaded && <SkeletonLoading></SkeletonLoading>}
         <img
           className="w-full h-80 object-cover rounded-t-2xl"
           src={image}
           alt={`${title}-image`}
+          onLoad={onLoad}
         />
-        <p className="text-xl bg-amber-600 w-fit px-5 text-white rounded-xl absolute bottom-2 left-2">
+        <p className="text-xl bg-amber-600 w-fit px-5 text-white rounded-xl absolute top-5 left-2">
           {discount_rate}% off
         </p>
       </div>
@@ -28,8 +32,8 @@ const SpecialOfferCard = ({ data }) => {
       <div className="px-5 py-5 space-y-5">
         <h1 className="text-3xl md:text-4xl marcellus">{title}</h1>
         <div className="grid lg:grid-cols-2">
-          {features.map((feature) => (
-            <div className="flex items-center gap-2">
+          {features.map((feature, index) => (
+            <div key={index} className="flex items-center gap-2">
               <FaRegCheckCircle />
               {feature}
             </div>

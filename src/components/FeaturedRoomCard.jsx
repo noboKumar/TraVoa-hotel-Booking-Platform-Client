@@ -1,14 +1,17 @@
 import React from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { Link } from "react-router";
+import useImageLoader from "../hooks/useImageLoader";
+import SkeletonLoading from "./SkeletonLoading";
 
 const FeaturedRoomCard = ({ data }) => {
   const { image, title, description, price, _id } = data;
-  console.log(data);
+  const { imageLoaded, onLoad } = useImageLoader();
   return (
     <>
       <div className="card bg-base-100 shadow-sm">
         <figure className="relative">
+          {!imageLoaded && <SkeletonLoading></SkeletonLoading>}
           <h1 className="bg-amber-700 px-5 rounded-2xl text-white absolute top-5 left-2">
             Top Rated
           </h1>
@@ -16,6 +19,7 @@ const FeaturedRoomCard = ({ data }) => {
             className="h-[300px] w-full object-cover rounded-t-xl"
             src={image}
             alt="rooms photo"
+            onLoad={onLoad}
           />
         </figure>
         <div className="card-body">
