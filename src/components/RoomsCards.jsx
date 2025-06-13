@@ -17,7 +17,7 @@ const RoomsCards = ({ data }) => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title text-2xl poppins">
+            <h2 className="card-title text-2xl marcellus">
               {title}
               <div className="badge badge-secondary text-white">
                 {available ? "available" : "unavailable"}

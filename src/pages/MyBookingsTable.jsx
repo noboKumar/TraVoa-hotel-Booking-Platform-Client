@@ -12,7 +12,7 @@ const MyBookingsTable = ({ data }) => {
             </div>
           </div>
           <div>
-            <div className="font-bold text-xl md:text-2xl">{title}</div>
+            <div className="font-semibold text-xl md:text-2xl marcellus">{title}</div>
             <div className="text-sm opacity-50">Booked Date:{bookedDate}</div>
           </div>
         </div>

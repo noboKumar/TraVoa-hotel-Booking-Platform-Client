@@ -49,7 +49,6 @@ const Slider = () => {
         className="mySwiper"
         modules={[Navigation, Pagination, A11y, Autoplay, EffectCoverflow]}
         effect={"coverflow"}
-        grabCursor={true}
         centeredSlides={true}
         coverflowEffect={{
           rotate: 50,
@@ -88,7 +87,7 @@ const Slider = () => {
               >
                 {/* text and buttons */}
                 <div className="w-full md:w-2/3 lg:w-1/2 space-y-2 md:space-y-5">
-                  <h1 className="md:text-5xl text-2xl font-bold poppins">
+                  <h1 className="lg:text-7xl md:text-5xl text-2xl marcellus">
                     {slider.title}
                   </h1>
                   <p className="md:text-xl line-clamp-3 md:line-clamp-5">

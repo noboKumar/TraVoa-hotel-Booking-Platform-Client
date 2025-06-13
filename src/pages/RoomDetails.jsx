@@ -34,7 +34,7 @@ const RoomDetails = () => {
         src={image}
         alt="room image"
       />
-      <h1 className="text-3xl text-primary poppins font-semibold">
+      <h1 className="text-3xl text-primary marcellus font-semibold">
         {title}{" "}
         <div className="badge badge-secondary text-white">
           {available ? "available" : "unavailable"}
@@ -50,14 +50,14 @@ const RoomDetails = () => {
       </div>
       <RoomFacility></RoomFacility>
       <p className="text-xl flex flex-col lg:w-4/6">
-        <span className="text-2xl font-semibold poppins">Description:</span>
+        <span className="text-2xl font-semibold marcellus">Description:</span>
         {description}
       </p>
       <button onClick={handleBookNow} className="btn btn-primary">
         Book Now
       </button>
       <div className="space-y-2">
-        <h1 className="text-4xl font-semibold poppins">Reviews:</h1>
+        <h1 className="text-4xl font-semibold marcellus">Reviews:</h1>
         <div>
           {reviews.length ? (
             reviews.map((review, index) => (

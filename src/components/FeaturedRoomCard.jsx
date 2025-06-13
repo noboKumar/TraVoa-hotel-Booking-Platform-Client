@@ -19,7 +19,7 @@ const FeaturedRoomCard = ({ data }) => {
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title text-2xl poppins">{title}</h2>
+          <h2 className="card-title text-2xl marcellus">{title}</h2>
           <p className="line-clamp-2">{description}</p>
           <div className="flex items-center text-xl text-accent">
             <TbCurrencyTaka size={25} />
