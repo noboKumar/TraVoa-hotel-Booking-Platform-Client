@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLoaderData, useNavigate } from "react-router";
 import RoomFacility from "../components/RoomFacility";
 import { TbCurrencyTaka } from "react-icons/tb";
-import ReadOnlyStars from "../components/ReadOnlyStars";
 import BookNowModal from "../components/BookNowModal";
 import { MdKeyboardBackspace } from "react-icons/md";
 import ReviewCard from "../components/ReviewCard";
@@ -45,7 +44,7 @@ const RoomDetails = () => {
         <div>
           <Rating style={{ maxWidth: 120 }} value={5} readOnly itemStyles={{ itemShapes:StickerStar, activeFillColor: '#f59e0b', inactiveFillColor: '#ffedd5' }} />
         </div>
-        <p className="text-xl">({reviews.length} Reviews)</p>
+        <p className="text-xl">({reviews?.length} Reviews)</p>
       </div>
       <div className="flex items-center text-xl text-accent">
         <TbCurrencyTaka size={25} />

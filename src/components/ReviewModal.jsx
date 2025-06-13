@@ -2,24 +2,30 @@ import React, { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { apiClient } from "../API/apiClient";
 
-const ReviewModal = () => {
+const ReviewModal = ({ _id }) => {
   const { user } = useAuth();
   const [ratingValue, setRatingValue] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    const reviewerName = form.name.value;
     const rating = ratingValue;
     const comment = form.comment.value;
-    const userEmail = user.email;
-    console.log({ name, rating, comment, userEmail });
-  };
+    const reviewerImage = user.photoURL;
+    const reviewInfo = { reviewerName, reviewerImage, rating, comment };
+    console.log(reviewInfo);
 
+    apiClient
+      .patch(`/review/${_id}`, reviewInfo)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
   return (
     <>
-      <dialog id="my_modal_2" className="modal">
+      <dialog id={`my_modal_${_id}`} className="modal">
         <div className="modal-box">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}

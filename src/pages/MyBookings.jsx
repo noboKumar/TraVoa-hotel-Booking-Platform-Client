@@ -45,7 +45,6 @@ const MyBookings = () => {
               ))}
             </tbody>
           </table>
-          <ReviewModal></ReviewModal>
         </div>
       </div>
     </div>

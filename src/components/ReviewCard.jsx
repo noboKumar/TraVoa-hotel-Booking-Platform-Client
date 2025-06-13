@@ -1,23 +1,12 @@
 import React from "react";
-import ReactStars from "react-rating-stars-component";
-import { ImStarEmpty } from "react-icons/im";
-import { FaStarHalfAlt } from "react-icons/fa";
-import { ImStarFull } from "react-icons/im";
-import { Rating, StickerStar } from "@smastrom/react-rating";
+import { Rating } from "@smastrom/react-rating";
 
 const ReviewCard = ({ review }) => {
-  const { image, reviewerName, comment, rating } = review;
+  const { reviewerImage, reviewerName, comment, rating } = review;
   return (
     <div className="border-2 bg-gray-100 border-gray-300 shadow-sm rounded-2xl my-5 p-5 space-y-2">
       <div className="flex items-center">
-        <img
-          className="w-[80px] rounded-full"
-          src={
-            image ||
-            "https://i.ibb.co/7dWZdWx2/depositphotos-119671346-stock-illustration-user-icon-vector-male-person.webp"
-          }
-          alt=""
-        />
+        <img className="w-[80px] rounded-full" src={reviewerImage} alt="" />
         <h1 className="text-xl font-semibold">{reviewerName}</h1>
       </div>
       <div>

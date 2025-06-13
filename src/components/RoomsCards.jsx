@@ -30,7 +30,7 @@ const RoomsCards = ({ data }) => {
             </div>
             <div className="flex items-center text-xl text-accent">
               <FaRegStar />
-              <span>Total Review: {reviews.length}</span>
+              <span>Total Review: {reviews?.length}</span>
             </div>
           </div>
         </Link>
