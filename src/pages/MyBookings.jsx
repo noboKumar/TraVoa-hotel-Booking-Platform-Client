@@ -5,6 +5,7 @@ import { FaHotel } from "react-icons/fa6";
 import useAuth from "../hooks/useAuth";
 import { fetchMyBookingsData } from "../API/myBookings";
 import MyBookingsTable from "./MyBookingsTable";
+import ReviewModal from "../components/ReviewModal";
 
 const MyBookings = () => {
   const { user } = useAuth();
@@ -15,14 +16,12 @@ const MyBookings = () => {
   useEffect(() => {
     fetchMyBookingsData(email, token)
       .then((data) => {
-        console.log(data);
         setMyBookingsData(data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [email, token]);
-  console.log(myBookingsData);
 
   return (
     <div>
@@ -46,6 +45,7 @@ const MyBookings = () => {
               ))}
             </tbody>
           </table>
+          <ReviewModal></ReviewModal>
         </div>
       </div>
     </div>

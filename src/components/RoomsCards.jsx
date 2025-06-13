@@ -2,22 +2,18 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import { FaRegStar } from "react-icons/fa";
 import { Link } from "react-router";
 import SkeletonLoading from "./SkeletonLoading";
-import useImageLoader from "../hooks/useImageLoader";
 
 const RoomsCards = ({ data }) => {
   const { image, available, title, description, price, reviews, _id } = data;
-  const { imageLoaded, onLoad } = useImageLoader;
   return (
     <>
       <div className="card bg-base-100 shadow-sm cursor-pointer transition-transform duration-300 hover:scale-105">
         <Link to={`/rooms/${_id}`}>
           <figure>
-            {!imageLoaded && <SkeletonLoading></SkeletonLoading>}
             <img
               className="h-[300px] w-full object-cover rounded-t-xl"
               src={image}
               alt="rooms photo"
-              onLoad={onLoad}
             />
           </figure>
           <div className="card-body">

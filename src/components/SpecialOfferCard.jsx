@@ -1,7 +1,6 @@
 import React from "react";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
-import useImageLoader from "../hooks/useImageLoader";
 import SkeletonLoading from "./SkeletonLoading";
 
 const SpecialOfferCard = ({ data }) => {
@@ -13,16 +12,13 @@ const SpecialOfferCard = ({ data }) => {
     features,
     discount_rate,
   } = data;
-  const { imageLoaded, onLoad } = useImageLoader();
   return (
     <div className="shadow-sm rounded-2xl ">
       <div className="relative">
-        {!imageLoaded && <SkeletonLoading></SkeletonLoading>}
         <img
-          className="w-full h-80 object-cover rounded-t-2xl"
+          className="w-full h-[300px] object-cover rounded-t-2xl"
           src={image}
           alt={`${title}-image`}
-          onLoad={onLoad}
         />
         <p className="text-xl bg-amber-600 w-fit px-5 text-white rounded-xl absolute top-5 left-2">
           {discount_rate}% off
