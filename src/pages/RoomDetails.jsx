@@ -7,6 +7,7 @@ import BookNowModal from "../components/BookNowModal";
 import { MdKeyboardBackspace } from "react-icons/md";
 import ReviewCard from "../components/ReviewCard";
 import useAuth from "../hooks/useAuth";
+import { Rating, StickerStar } from "@smastrom/react-rating";
 
 const RoomDetails = () => {
   const { user } = useAuth();
@@ -40,8 +41,10 @@ const RoomDetails = () => {
           {available ? "available" : "unavailable"}
         </div>
       </h1>
-      <div className="flex gap-2">
-        <ReadOnlyStars></ReadOnlyStars>
+      <div className="flex items-center gap-2">
+        <div>
+          <Rating style={{ maxWidth: 120 }} value={5} readOnly itemStyles={{ itemShapes:StickerStar, activeFillColor: '#f59e0b', inactiveFillColor: '#ffedd5' }} />
+        </div>
         <p className="text-xl">({reviews.length} Reviews)</p>
       </div>
       <div className="flex items-center text-xl text-accent">

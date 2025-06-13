@@ -3,6 +3,7 @@ import ReactStars from "react-rating-stars-component";
 import { ImStarEmpty } from "react-icons/im";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { ImStarFull } from "react-icons/im";
+import { Rating, StickerStar } from "@smastrom/react-rating";
 
 const ReviewCard = ({ review }) => {
   const { image, reviewerName, comment, rating } = review;
@@ -20,16 +21,7 @@ const ReviewCard = ({ review }) => {
         <h1 className="text-xl font-semibold">{reviewerName}</h1>
       </div>
       <div>
-        <ReactStars
-          value={rating}
-          count={5}
-          size={24}
-          isHalf={true}
-          emptyIcon={<ImStarEmpty />}
-          halfIcon={<FaStarHalfAlt />}
-          filledIcon={<ImStarFull />}
-          activeColor="#e09136"
-        />
+        <Rating style={{ maxWidth: 120 }} value={rating} readOnly />
       </div>
       <p className="text-lg">"{comment}"</p>
     </div>
