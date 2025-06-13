@@ -4,6 +4,7 @@ import Slider from "../components/Slider";
 import FeaturedRooms from "../components/FeaturedRooms";
 import OurFacilities from "../components/OurFacilities";
 import SpecialOffer from "../components/SpecialOffer";
+import OurLocation from "../components/OurLocation";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <FeaturedRooms></FeaturedRooms>
       <OurFacilities></OurFacilities>
       <SpecialOffer></SpecialOffer>
+      <OurLocation></OurLocation>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import SpecialOfferCard from "./SpecialOfferCard";
 
 const SpecialOffer = () => {
   return (
-    <div className="pt-20">
+    <div className="pt-10">
       <PageTitle
         title={"Our Special Offers"}
         logo={<IoPricetags />}
