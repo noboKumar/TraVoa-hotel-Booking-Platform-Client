@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "title": "Family Fun Package",
+    "features": [
+      "15% off on family suites",
+      "Free meals for kids under 12",
+      "Complimentary tickets",
+      "The local amusement park"
+    ],
+    "previous_price": 8690,
+    "present_price": 4290,
+    "image": "https://i.ibb.co/22TBbpC/outside-family-900x600.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Spa Retreat",
+    "features": [
+      "A two-night stay in a room",
+      "Healthy breakfast and lunch",
+      "Access to all spa facilities",
+      "Daily spa treatments",
+      "Access to all spa"
+    ],
+    "previous_price": 6490,
+    "present_price": 3960,
+    "image": "https://i.ibb.co/Vp2b0GsT/4583adeeb777458d2218042bf7bdec08.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Romantic Getaway",
+    "features": [
+      "A two-night stay in a room",
+      "Healthy breakfast and lunch",
+      "Access to all spa facilities",
+      "Daily spa treatments",
+      "Access to all spa"
+    ],
+    "previous_price": 6490,
+    "present_price": 3960,
+    "image": "https://i.ibb.co/TMjPhYjv/young-couple-having-romantic-evening-with-candles-on-beach.jpg"
+  }
+]
