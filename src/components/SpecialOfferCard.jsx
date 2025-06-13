@@ -3,15 +3,28 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 const SpecialOfferCard = ({ data }) => {
-  const { image, title, present_price, previous_price, features } = data;
+  const {
+    image,
+    title,
+    present_price,
+    previous_price,
+    features,
+    discount_rate,
+  } = data;
   console.log(data);
   return (
-    <div className="shadow-sm rounded-2xl">
-      <img
-        className="w-full h-80 object-cover rounded-t-2xl"
-        src={image}
-        alt={`${title}-image`}
-      />
+    <div className="shadow-sm rounded-2xl ">
+      <div className="relative">
+        <img
+          className="w-full h-80 object-cover rounded-t-2xl"
+          src={image}
+          alt={`${title}-image`}
+        />
+        <p className="text-xl bg-amber-600 w-fit px-5 text-white rounded-xl absolute bottom-2 left-2">
+          {discount_rate}% off
+        </p>
+      </div>
+
       <div className="px-5 py-5 space-y-5">
         <h1 className="text-3xl md:text-4xl marcellus">{title}</h1>
         <div className="grid lg:grid-cols-2">

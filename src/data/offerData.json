@@ -10,6 +10,7 @@
     ],
     "previous_price": 8690,
     "present_price": 4290,
+    "discount_rate": 51,
     "image": "https://i.ibb.co/22TBbpC/outside-family-900x600.jpg"
   },
   {
@@ -24,6 +25,7 @@
     ],
     "previous_price": 6490,
     "present_price": 3960,
+    "discount_rate": 39,
     "image": "https://i.ibb.co/Vp2b0GsT/4583adeeb777458d2218042bf7bdec08.jpg"
   },
   {
@@ -38,6 +40,7 @@
     ],
     "previous_price": 6490,
     "present_price": 3960,
+    "discount_rate": 39,
     "image": "https://i.ibb.co/TMjPhYjv/young-couple-having-romantic-evening-with-candles-on-beach.jpg"
   }
 ]
