@@ -1,11 +1,18 @@
 import React from "react";
 import ReviewModal from "../components/ReviewModal";
+import UpdateDateModal from "../components/UpdateDateModal";
 
 const MyBookingsTable = ({ data }) => {
   const { image, price, bookedDate, title, _id } = data;
+
   const handleReview = () => {
-    document.getElementById(`my_modal_${_id}`).showModal();
+    document.getElementById(`book_now_modal_${_id}`).showModal();
   };
+
+  const handleUpdateDate = () => {
+    document.getElementById(`update_date_modal_${_id}`).showModal();
+  };
+
   return (
     <>
       <tr>
@@ -31,7 +38,10 @@ const MyBookingsTable = ({ data }) => {
               Review
             </button>
             <ReviewModal _id={_id}></ReviewModal>
-            <button className="btn btn-primary">Update Date</button>
+            <button onClick={handleUpdateDate} className="btn btn-primary">
+              Update Date
+            </button>
+            <UpdateDateModal _id={_id}></UpdateDateModal>
             <button className="btn bg-red-800 text-white">Cancel</button>
           </div>
         </td>

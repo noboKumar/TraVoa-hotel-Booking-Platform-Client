@@ -49,10 +49,10 @@ const BookNowModal = ({ title, description, price, available, _id }) => {
               <div>
                 <h3 className="font-bold text-2xl">{title}</h3>
                 <p className="py-4">{description}</p>
-                <DatePicker
-                  selectedDate={selectedDate}
-                  setSelectedDate={setSelectedDate}
-                ></DatePicker>
+                  <DatePicker
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
+                  ></DatePicker>
                 <p className="text-error text-sm">{error}</p>
                 <p className="py-4 text-xl">
                   <span className="font-semibold">Price:</span>

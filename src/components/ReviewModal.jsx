@@ -16,16 +16,16 @@ const ReviewModal = ({ _id }) => {
     const comment = form.comment.value;
     const reviewerImage = user.photoURL;
     const reviewInfo = { reviewerName, reviewerImage, rating, comment };
-    console.log(reviewInfo);
 
     apiClient
       .patch(`/review/${_id}`, reviewInfo)
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
   };
+
   return (
     <>
-      <dialog id={`my_modal_${_id}`} className="modal">
+      <dialog id={`book_now_modal_${_id}`} className="modal">
         <div className="modal-box">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
