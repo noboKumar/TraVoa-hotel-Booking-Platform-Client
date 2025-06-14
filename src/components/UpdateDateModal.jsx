@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "./DatePicker";
 import "react-day-picker/style.css";
 import { DayPicker } from "react-day-picker";
+import { apiClient } from "../API/apiClient";
 
 const UpdateDateModal = ({ _id }) => {
   const [selectedDate, setSelectedDate] = useState();
@@ -9,7 +10,11 @@ const UpdateDateModal = ({ _id }) => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    console.log(dateData);
+
+    apiClient
+      .patch(`/updateDate/${_id}`, { dateData })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
