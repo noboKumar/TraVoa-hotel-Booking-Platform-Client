@@ -1,9 +1,15 @@
 import React from "react";
 import ReviewModal from "../components/ReviewModal";
 import UpdateDateModal from "../components/UpdateDateModal";
+import { apiClient } from "../API/apiClient";
+import Swal from "sweetalert2";
+import moment from "moment/moment";
 
 const MyBookingsTable = ({ data }) => {
   const { image, price, bookedDate, title, _id } = data;
+  const cancelDate = moment().startOf("day");
+  const bookingDate = moment(bookedDate, "DD/MM/YYYY").startOf("day");
+  const isBefore = bookingDate.diff(cancelDate, "day");
 
   const handleReview = () => {
     document.getElementById(`book_now_modal_${_id}`).showModal();
@@ -11,6 +17,38 @@ const MyBookingsTable = ({ data }) => {
 
   const handleUpdateDate = () => {
     document.getElementById(`update_date_modal_${_id}`).showModal();
+  };
+
+  const handleCancel = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Cancel This Room!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (isBefore <= 1) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You can't cancel booking 1 day before",
+          });
+          return;
+        }
+        apiClient
+          .patch(`/cancelBooking/${_id}`)
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
+        Swal.fire({
+          title: "Canceled!",
+          text: "Your booking has been canceled",
+          icon: "success",
+        });
+      }
+    });
   };
 
   return (
@@ -42,7 +80,12 @@ const MyBookingsTable = ({ data }) => {
               Update Date
             </button>
             <UpdateDateModal _id={_id}></UpdateDateModal>
-            <button className="btn bg-red-800 text-white">Cancel</button>
+            <button
+              onClick={handleCancel}
+              className="btn bg-red-800 text-white"
+            >
+              Cancel
+            </button>
           </div>
         </td>
       </tr>
