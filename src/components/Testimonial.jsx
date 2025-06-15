@@ -16,7 +16,6 @@ const Testimonial = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-  console.log(reviewData);
   return (
     <div>
       <PageTitle
