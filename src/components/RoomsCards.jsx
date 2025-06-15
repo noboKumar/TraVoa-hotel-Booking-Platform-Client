@@ -1,7 +1,6 @@
 import { TbCurrencyTaka } from "react-icons/tb";
 import { FaRegStar } from "react-icons/fa";
 import { Link } from "react-router";
-import SkeletonLoading from "./SkeletonLoading";
 
 const RoomsCards = ({ data }) => {
   const { image, available, title, description, price, reviews, _id } = data;

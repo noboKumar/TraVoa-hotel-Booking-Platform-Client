@@ -15,7 +15,15 @@ const ReviewModal = ({ _id }) => {
     const rating = ratingValue;
     const comment = form.comment.value;
     const reviewerImage = user.photoURL;
-    const reviewInfo = { reviewerName, reviewerImage, rating, comment };
+    const timeStamp = new Date().toISOString();
+
+    const reviewInfo = {
+      reviewerName,
+      reviewerImage,
+      rating,
+      comment,
+      timeStamp,
+    };
 
     apiClient
       .patch(`/review/${_id}`, reviewInfo)
