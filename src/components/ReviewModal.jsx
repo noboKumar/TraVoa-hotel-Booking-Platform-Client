@@ -29,6 +29,11 @@ const ReviewModal = ({ _id }) => {
       .patch(`/review/${_id}`, reviewInfo)
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
+
+    apiClient
+      .post("/allReview", reviewInfo)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   };
 
   return (
