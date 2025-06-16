@@ -6,6 +6,7 @@ import PageTitle from "../components/PageTitle";
 import { MdLocalHotel } from "react-icons/md";
 import useAuth from "../hooks/useAuth";
 import Loading from "../components/Loading";
+import { fetchPriceRangeRooms } from "../API/priceRange";
 
 const Rooms = () => {
   const { loading, setLoading } = useAuth();
@@ -16,8 +17,16 @@ const Rooms = () => {
     const form = e.target;
     const minPrice = form.minPrice.value;
     const maxPrice = form.maxPrice.value;
-    const priceRangeInfo = {minPrice, maxPrice}
-    console.log(priceRangeInfo);
+
+    fetchPriceRangeRooms(minPrice, maxPrice)
+      .then((data) => setRoomData(data))
+      .catch((err) => console.log(err));
+  };
+
+  const handleResetRange = () => {
+    fetchRoomData()
+      .then((data) => setRoomData(data))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -58,9 +67,18 @@ const Rooms = () => {
               className="input w-1/12"
             />
           </div>
-          <button className="btn btn-primary" type="submit">
-            Submit
-          </button>
+          <div className="space-x-5">
+            <button className="btn btn-primary" type="submit">
+              Submit
+            </button>
+            <button
+              onClick={handleResetRange}
+              className="btn bg-red-700 text-white"
+              type="reset"
+            >
+              reset
+            </button>
+          </div>
         </form>
       </div>
       <PageTitle title={"Rooms"} logo={<MdLocalHotel />}></PageTitle>
