@@ -5,10 +5,12 @@ import { Link, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { createUser, updateUser, setUser, googleLogin } = useAuth();
   const [passwordError, setPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -64,7 +66,7 @@ const Register = () => {
   const handleGoogleLogIn = () => {
     googleLogin()
       .then((result) => {
-        setUser(result.user)
+        setUser(result.user);
         navigate("/");
         Swal.fire({
           icon: "success",
@@ -198,10 +200,13 @@ const Register = () => {
               </svg>
               <input
                 name="password"
-                type="password"
+                type={showPassword? "text" :"password"}
                 required
                 placeholder="Password"
               />
+              <button className="cursor-pointer" type="button" onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
             </label>
             <p className="text-error text-sm">{passwordError}</p>
             <button className="btn btn-primary mt-4">Register</button>

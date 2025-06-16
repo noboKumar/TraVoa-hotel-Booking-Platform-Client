@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import loginAnimation from "../assets/Animation - 1749406752221.json";
 import Lottie from "lottie-react";
 import { Link, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { logInUser, googleLogin } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
@@ -126,10 +128,17 @@ const Login = () => {
               </svg>
               <input
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 required
                 placeholder="Password"
               />
+              <button
+                className="cursor-pointer"
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
             </label>
             <div>
               <a className="link link-hover">Forgot password?</a>
