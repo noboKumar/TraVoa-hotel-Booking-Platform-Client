@@ -6,6 +6,7 @@ import OurFacilities from "../components/OurFacilities";
 import SpecialOffer from "../components/SpecialOffer";
 import OurLocation from "../components/OurLocation";
 import Testimonial from "../components/Testimonial";
+import PopUp from "../components/PopUp";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <SpecialOffer></SpecialOffer>
       <Testimonial></Testimonial>
       <OurLocation></OurLocation>
+      {!sessionStorage.getItem("popUpShown", "true") && <PopUp></PopUp>}
     </div>
   );
 };
