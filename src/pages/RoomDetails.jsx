@@ -7,6 +7,7 @@ import { MdKeyboardBackspace } from "react-icons/md";
 import ReviewCard from "../components/ReviewCard";
 import useAuth from "../hooks/useAuth";
 import { Rating, StickerStar } from "@smastrom/react-rating";
+import ReviewModal from "../components/ReviewModal";
 
 const RoomDetails = () => {
   const { user } = useAuth();
@@ -20,6 +21,10 @@ const RoomDetails = () => {
       return;
     }
     document.getElementById("bookNow_modal").showModal();
+  };
+
+  const handleReview = () => {
+    document.getElementById(`book_now_modal_${_id}`).showModal();
   };
 
   return (
@@ -64,9 +69,19 @@ const RoomDetails = () => {
         <span className="text-2xl font-semibold marcellus">Description:</span>
         {description}
       </p>
-      <button onClick={handleBookNow} className="btn btn-primary">
-        Book Now
-      </button>
+      <div className="space-x-5">
+        <button onClick={handleBookNow} className="btn btn-primary">
+          Book Now
+        </button>
+        {data?.bookedUser === user?.email && (
+          <button
+            onClick={handleReview}
+            className="btn btn-secondary text-white"
+          >
+            Give a Review
+          </button>
+        )}
+      </div>
       <div className="space-y-2">
         <h1 className="text-4xl font-semibold marcellus">Reviews:</h1>
         <div>
@@ -82,6 +97,7 @@ const RoomDetails = () => {
           )}
         </div>
       </div>
+      <ReviewModal _id={_id}></ReviewModal>
       <BookNowModal
         title={title}
         description={description}

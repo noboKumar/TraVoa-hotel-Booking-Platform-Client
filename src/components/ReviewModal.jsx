@@ -81,7 +81,7 @@ const ReviewModal = ({ _id }) => {
                   type="text"
                   placeholder="Username"
                   readOnly
-                  defaultValue={user.displayName}
+                  defaultValue={user?.displayName}
                 />
               </label>
             </fieldset>

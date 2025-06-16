@@ -1,5 +1,4 @@
 import React from "react";
-import ReviewModal from "../components/ReviewModal";
 import UpdateDateModal from "../components/UpdateDateModal";
 import { apiClient } from "../API/apiClient";
 import Swal from "sweetalert2";
@@ -10,10 +9,6 @@ const MyBookingsTable = ({ data }) => {
   const cancelDate = moment().startOf("day");
   const bookingDate = moment(bookedDate, "DD/MM/YYYY").startOf("day");
   const isBefore = bookingDate.diff(cancelDate, "day");
-
-  const handleReview = () => {
-    document.getElementById(`book_now_modal_${_id}`).showModal();
-  };
 
   const handleUpdateDate = () => {
     document.getElementById(`update_date_modal_${_id}`).showModal();
@@ -72,10 +67,6 @@ const MyBookingsTable = ({ data }) => {
         <td className="text-lg font-bold">{price} Tk./ night</td>
         <td>
           <div className="flex flex-col lg:flex-row gap-2 md:gap-5 justify-center">
-            <button onClick={handleReview} className="btn btn-primary">
-              Review
-            </button>
-            <ReviewModal _id={_id}></ReviewModal>
             <button onClick={handleUpdateDate} className="btn btn-primary">
               Update Date
             </button>
