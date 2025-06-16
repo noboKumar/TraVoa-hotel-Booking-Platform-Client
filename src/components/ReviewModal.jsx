@@ -3,6 +3,7 @@ import useAuth from "../hooks/useAuth";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { apiClient } from "../API/apiClient";
+import Swal from "sweetalert2";
 
 const ReviewModal = ({ _id }) => {
   const { user } = useAuth();
@@ -27,13 +28,21 @@ const ReviewModal = ({ _id }) => {
 
     apiClient
       .patch(`/review/${_id}`, reviewInfo)
-      .then((data) => console.log(data))
+      .then(() => {})
       .catch((err) => console.log(err));
 
     apiClient
       .post("/allReview", reviewInfo)
-      .then((data) => console.log(data))
+      .then(() => {})
       .catch((err) => console.log(err));
+
+    document.getElementById(`book_now_modal_${_id}`).close();
+    Swal.fire({
+      icon: "success",
+      title: "Review submitted successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (

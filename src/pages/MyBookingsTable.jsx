@@ -40,7 +40,7 @@ const MyBookingsTable = ({ data }) => {
         }
         apiClient
           .patch(`/cancelBooking/${_id}`)
-          .then((res) => console.log(res))
+          .then(() => {})
           .catch((err) => console.log(err));
         Swal.fire({
           title: "Canceled!",

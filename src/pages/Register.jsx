@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import registerAnimation from "../assets/Animation - 1749405532540.json";
 import Lottie from "lottie-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 const Register = () => {
   const { createUser, updateUser, setUser, googleLogin } = useAuth();
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -29,9 +30,11 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const userData = result.user;
+        console.log(userData);
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
             setUser({ ...userData, displayName: name, photoURL: photo });
+            navigate("/");
             Swal.fire({
               icon: "success",
               title: "Account Created Successfully",
@@ -61,6 +64,8 @@ const Register = () => {
   const handleGoogleLogIn = () => {
     googleLogin()
       .then((result) => {
+        setUser(result.user)
+        navigate("/");
         Swal.fire({
           icon: "success",
           title: "Account Created Successfully",

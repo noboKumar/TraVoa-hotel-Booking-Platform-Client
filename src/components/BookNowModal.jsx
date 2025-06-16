@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "./DatePicker";
 import useAuth from "../hooks/useAuth";
 import { apiClient } from "../API/apiClient";
+import Swal from "sweetalert2";
 
 const BookNowModal = ({ title, description, price, available, _id }) => {
   const [selectedDate, setSelectedDate] = useState();
@@ -26,18 +27,24 @@ const BookNowModal = ({ title, description, price, available, _id }) => {
 
     apiClient
       .patch(`/bookedRooms/${_id}`, bookedData)
-      .then((res) => {
-        console.log(res);
-      })
+      .then(() => {})
       .catch((err) => {
         console.log(err);
       });
+    document.getElementById("bookNow_modal").close();
+    Swal.fire({
+      icon: "success",
+      title: "You have successfully booked Room",
+      text: `Booked Date: ${dateData}`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (
     <>
       {available ? (
-        <dialog id="my_modal" className="modal">
+        <dialog id="bookNow_modal" className="modal">
           <div className="modal-box">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
@@ -49,10 +56,10 @@ const BookNowModal = ({ title, description, price, available, _id }) => {
               <div>
                 <h3 className="font-bold text-2xl">{title}</h3>
                 <p className="py-4">{description}</p>
-                  <DatePicker
-                    selectedDate={selectedDate}
-                    setSelectedDate={setSelectedDate}
-                  ></DatePicker>
+                <DatePicker
+                  selectedDate={selectedDate}
+                  setSelectedDate={setSelectedDate}
+                ></DatePicker>
                 <p className="text-error text-sm">{error}</p>
                 <p className="py-4 text-xl">
                   <span className="font-semibold">Price:</span>
@@ -66,7 +73,7 @@ const BookNowModal = ({ title, description, price, available, _id }) => {
           </div>
         </dialog>
       ) : (
-        <dialog id="my_modal" className="modal">
+        <dialog id="bookNow_modal" className="modal">
           <div className="modal-box">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}

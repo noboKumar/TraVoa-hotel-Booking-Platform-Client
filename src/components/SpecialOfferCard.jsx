@@ -20,7 +20,7 @@ const SpecialOfferCard = ({ data }) => {
           src={image}
           alt={`${title}-image`}
         />
-        <p className="text-xl bg-amber-600 w-fit px-5 text-white rounded-xl absolute top-5 left-2">
+        <p className="text-xl bg-amber-600 border-2 border-gray-300 w-fit px-5 text-white rounded-xl absolute bottom-5 left-2">
           {discount_rate}% off
         </p>
       </div>

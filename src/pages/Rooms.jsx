@@ -57,14 +57,14 @@ const Rooms = () => {
               type="number"
               required
               placeholder="Min price"
-              className="input w-1/12"
+              className="input w-1/3 lg:w-1/12 md:w-2/12"
             />
             <input
               name="maxPrice"
               type="number"
               required
               placeholder="Max price"
-              className="input w-1/12"
+              className="input w-1/3 lg:w-1/12 md:w-2/12"
             />
           </div>
           <div className="space-x-5">

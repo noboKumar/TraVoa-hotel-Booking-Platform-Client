@@ -19,7 +19,7 @@ const RoomDetails = () => {
       navigate("/login");
       return;
     }
-    document.getElementById("my_modal").showModal();
+    document.getElementById("bookNow_modal").showModal();
   };
 
   return (
@@ -42,7 +42,16 @@ const RoomDetails = () => {
       </h1>
       <div className="flex items-center gap-2">
         <div>
-          <Rating style={{ maxWidth: 120 }} value={5} readOnly itemStyles={{ itemShapes:StickerStar, activeFillColor: '#f59e0b', inactiveFillColor: '#ffedd5' }} />
+          <Rating
+            style={{ maxWidth: 120 }}
+            value={5}
+            readOnly
+            itemStyles={{
+              itemShapes: StickerStar,
+              activeFillColor: "#f59e0b",
+              inactiveFillColor: "#ffedd5",
+            }}
+          />
         </div>
         <p className="text-xl">({reviews?.length} Reviews)</p>
       </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "react-day-picker/style.css";
 import { DayPicker } from "react-day-picker";
 import { apiClient } from "../API/apiClient";
+import Swal from "sweetalert2";
 
 const UpdateDateModal = ({ _id }) => {
   const [selectedDate, setSelectedDate] = useState();
@@ -14,6 +15,15 @@ const UpdateDateModal = ({ _id }) => {
       .patch(`/updateDate/${_id}`, { dateData })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    document.getElementById(`update_date_modal_${_id}`).close();
+    
+    Swal.fire({
+      icon: "success",
+      title: "Date Updated successfully",
+      text: `New Date: ${dateData}`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (

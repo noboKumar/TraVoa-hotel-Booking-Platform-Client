@@ -1,13 +1,14 @@
 import React from "react";
 import loginAnimation from "../assets/Animation - 1749406752221.json";
 import Lottie from "lottie-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { logInUser, googleLogin } = useAuth();
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,7 +17,7 @@ const Login = () => {
 
     logInUser(email, password)
       .then((result) => {
-        console.log(result);
+        navigate("/");
         Swal.fire({
           icon: "success",
           title: "Logged In Successfully",
@@ -41,6 +42,7 @@ const Login = () => {
   const handleGoogleLogIn = () => {
     googleLogin()
       .then((result) => {
+        navigate("/");
         Swal.fire({
           icon: "success",
           title: "Logged in Successfully",
