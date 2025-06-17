@@ -4,6 +4,15 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import PageTitle from "./PageTitle";
 import { IoLocationSharp } from "react-icons/io5";
 import hotelImage from "../assets/hotel-outside.jpg";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+L.Icon.Default.mergeOptions({
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 const OurLocation = () => {
   return (
