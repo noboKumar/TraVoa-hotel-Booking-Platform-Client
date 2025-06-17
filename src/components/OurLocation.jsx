@@ -6,15 +6,18 @@ import { IoLocationSharp } from "react-icons/io5";
 import hotelImage from "../assets/hotel-outside.jpg";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
-L.Icon.Default.mergeOptions({
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
 });
 
+L.Marker.prototype.options.icon = DefaultIcon;
+
 const OurLocation = () => {
+  const location = [23.7903, 90.4169];
   return (
     <div>
       <PageTitle title={"Our Location"} logo={<IoLocationSharp />}></PageTitle>
@@ -22,7 +25,7 @@ const OurLocation = () => {
         <div className="lg:flex-1 w-full h-[400px]">
           <MapContainer
             scrollWheelZoom={false}
-            center={[23.7903, 90.4169]}
+            center={location}
             zoom={13}
             className="h-full w-full rounded-2xl border border-gray-300 z-0"
           >
@@ -30,7 +33,7 @@ const OurLocation = () => {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
             />
-            <Marker position={[23.7903, 90.4169]}>
+            <Marker position={location}>
               <Popup>Our Location</Popup>
             </Marker>
           </MapContainer>

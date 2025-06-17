@@ -73,7 +73,7 @@ const RoomDetails = () => {
         <button onClick={handleBookNow} className="btn btn-primary">
           Book Now
         </button>
-        {data?.bookedUser === user?.email && (
+        {user?.email && data?.bookedUser === user.email && (
           <button
             onClick={handleReview}
             className="btn btn-secondary text-white"
