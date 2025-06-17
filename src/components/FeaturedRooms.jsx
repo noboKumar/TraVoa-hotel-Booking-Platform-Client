@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { fetchFeaturedRooms } from "../API/featuredRooms";
 import PageTitle from "./PageTitle";
 import { MdHotelClass } from "react-icons/md";
-import FeaturedRoomCard from "./featuredRoomCard";
+import FeaturedRoomCard from "./FeaturedRoomCard";
+import Loading from "./Loading";
 
 const FeaturedRooms = () => {
   const [featuredData, setFeaturedData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetchFeaturedRooms()
       .then((data) => {
@@ -13,8 +16,15 @@ const FeaturedRooms = () => {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
   return (
     <div>
       <div className="py-5">

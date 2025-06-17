@@ -11,6 +11,7 @@ const Login = () => {
   const { logInUser, googleLogin } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;

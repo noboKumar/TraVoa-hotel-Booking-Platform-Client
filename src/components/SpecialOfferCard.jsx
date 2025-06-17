@@ -1,7 +1,6 @@
 import React from "react";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
-import SkeletonLoading from "./SkeletonLoading";
 
 const SpecialOfferCard = ({ data }) => {
   const {

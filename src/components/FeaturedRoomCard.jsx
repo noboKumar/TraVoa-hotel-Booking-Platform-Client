@@ -1,7 +1,6 @@
 import React from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { Link } from "react-router";
-import SkeletonLoading from "./SkeletonLoading";
 
 const FeaturedRoomCard = ({ data }) => {
   const { image, title, description, price, _id } = data;

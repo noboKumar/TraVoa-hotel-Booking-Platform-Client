@@ -4,12 +4,11 @@ import { fetchRoomData } from "../API/roomsApi";
 import RoomsCards from "../components/RoomsCards";
 import PageTitle from "../components/PageTitle";
 import { MdLocalHotel } from "react-icons/md";
-import useAuth from "../hooks/useAuth";
 import Loading from "../components/Loading";
 import { fetchPriceRangeRooms } from "../API/priceRange";
 
 const Rooms = () => {
-  const { loading, setLoading } = useAuth();
+  const [loading, setLoading] = useState(true);
   const [roomData, setRoomData] = useState([]);
 
   const handlePriceRange = (e) => {

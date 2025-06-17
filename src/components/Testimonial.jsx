@@ -6,16 +6,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import { Navigation, Pagination } from "swiper/modules";
 import { Rating } from "@smastrom/react-rating";
+import Loading from "./Loading";
 
 const Testimonial = () => {
   const [reviewData, setReviewData] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetchLatestReview()
       .then((data) => {
         setReviewData(data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
+  if (loading) {
+    return <Loading></Loading>;
+  }
   return (
     <div>
       <PageTitle
