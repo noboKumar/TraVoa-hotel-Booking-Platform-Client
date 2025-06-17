@@ -1,5 +1,5 @@
 import { TbCurrencyTaka } from "react-icons/tb";
-import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { Link } from "react-router";
 
 const RoomsCards = ({ data }) => {
@@ -23,13 +23,14 @@ const RoomsCards = ({ data }) => {
               </div>
             </h2>
             <p className="line-clamp-3">{description}</p>
-            <div className="flex items-center text-xl text-accent">
-              <TbCurrencyTaka size={25} />
-              <span className="text-secondary">{price}</span>/night
+            <div className="flex items-center text-lg text-accent">
+              <FaStar color="orange" />
+              <span>Total Review: {reviews?.length}</span>
             </div>
             <div className="flex items-center text-xl text-accent">
-              <FaRegStar />
-              <span>Total Review: {reviews?.length}</span>
+              <TbCurrencyTaka size={25} />
+              <span className="text-secondary">{price}</span>
+              /night
             </div>
           </div>
         </Link>
