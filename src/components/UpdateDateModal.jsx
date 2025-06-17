@@ -13,7 +13,7 @@ const UpdateDateModal = ({ _id }) => {
 
     apiClient
       .patch(`/updateDate/${_id}`, { dateData })
-      .then((res) => console.log(res))
+      .then(() => {})
       .catch((err) => console.log(err));
     document.getElementById(`update_date_modal_${_id}`).close();
     

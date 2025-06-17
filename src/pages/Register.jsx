@@ -32,7 +32,6 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const userData = result.user;
-        console.log(userData);
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
             setUser({ ...userData, displayName: name, photoURL: photo });
@@ -200,11 +199,15 @@ const Register = () => {
               </svg>
               <input
                 name="password"
-                type={showPassword? "text" :"password"}
+                type={showPassword ? "text" : "password"}
                 required
                 placeholder="Password"
               />
-              <button className="cursor-pointer" type="button" onClick={() => setShowPassword(!showPassword)}>
+              <button
+                className="cursor-pointer"
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+              >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </label>
