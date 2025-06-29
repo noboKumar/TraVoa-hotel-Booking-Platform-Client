@@ -112,5 +112,71 @@ TraVoa is fully optimized for all screen sizes:
 ✅ Desktop
 
 ---
+### 🚀 Run the Project Locally:
 
-> © 2025 – Developed with ❤️ by noboKumar
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/noboKumar/TraVoa-Hotel-Booking-Platform-Client.git
+cd TraVoa-Hotel-Booking-Platform-Client
+```
+
+2. **Install Dependencies**
+
+```bash
+npm install
+```
+
+3. **Set Environment Variables**
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+
+VITE_SERVER_URL=http://localhost:5000
+```
+
+4. **Start the Development Server**
+
+```bash
+npm run dev
+```
+
+> App will run at **[http://localhost:5173](http://localhost:5173)**
+
+---
+
+### 🔧 Backend Setup (Node.js + Express)
+
+1. **Navigate to Backend Folder** (if it's a separate folder like `/server`):
+
+```bash
+cd server
+```
+
+2. **Install Backend Dependencies**
+
+```bash
+npm install
+```
+
+3. **Create a `.env` file**
+
+```env
+PORT=3000
+DB_URI=your_mongodb_connection_string
+```
+
+4. **Start the Backend Server**
+
+```bash
+npm run dev
+```
+
+> Server will run at **[http://localhost:3000](http://localhost:3000)**
