@@ -1,6 +1,6 @@
 # 🏨 TraVoa – Hotel Booking Platform
 
-🔗 **Live Site URL**: [https://ph-assignment-11-travoa.netlify.app/](https://ph-assignment-11-travoa.netlify.app/)
+🔗 **Live Site URL**: [https://travoa.netlify.app/](https://travoa.netlify.app/)
 
 ---
 
