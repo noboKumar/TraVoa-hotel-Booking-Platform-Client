@@ -5,8 +5,9 @@ import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="footer lg:footer-horizontal bg-base-200 text-base-content p-10">
-      <aside>
+    <footer className="bg-base-200">
+      <div className="footer lg:footer-horizontal text-base-content p-10 w-11/12 mx-auto">
+        <aside>
         <div>
           <Logo></Logo>
           <p className="text-[20px]">"Feel at Home, Anywhere."</p>
@@ -73,6 +74,7 @@ const Footer = () => {
           </div>
         </fieldset>
       </form>
+      </div>
     </footer>
   );
 };
