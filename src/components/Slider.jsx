@@ -70,7 +70,7 @@ const Slider = () => {
             <div className="relative">
               {/* slider image */}
               <img
-                className="w-full h-[300px] md:h-[700px] rounded-2xl object-cover"
+                className="w-full h-[300px] md:h-[600px] rounded-2xl object-cover"
                 src={slider.image}
                 alt="slider images"
               />
