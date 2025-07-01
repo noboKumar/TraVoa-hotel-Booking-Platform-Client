@@ -20,6 +20,9 @@ const NavBar = () => {
           <NavLink to={"/myBookings"}>My Bookings</NavLink>
         </li>
       )}
+      <li>
+        <NavLink to={"/contactUs"}>Contact Us</NavLink>
+      </li>
     </>
   );
 
