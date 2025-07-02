@@ -81,7 +81,7 @@ const Rooms = () => {
         </form>
       </div>
       <PageTitle title={"Rooms"} logo={<MdLocalHotel />}></PageTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
         {roomData.map((data) => (
           <RoomsCards key={data._id} data={data}></RoomsCards>
         ))}
