@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import Logo from "./Logo";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import ThemeController from "./ThemeController";
 
 const NavBar = () => {
   const { user, logOutUser } = useAuth();
@@ -91,14 +92,15 @@ const NavBar = () => {
         <div className="navbar-end gap-4 z-10">
           {user && (
             <div
-              className="avatar tooltip tooltip-bottom"
-              data-tip={`${user.displayName}`}
+            className="avatar tooltip tooltip-bottom"
+            data-tip={`${user.displayName}`}
             >
               <div className="w-12 md:w-15 rounded-full">
                 <img src={user.photoURL} />
               </div>
             </div>
           )}
+          <ThemeController></ThemeController>
           {user ? (
             <button onClick={handleLogOut} className="btn btn-primary">
               Log Out

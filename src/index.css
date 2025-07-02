@@ -1,15 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Marcellus&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Marcellus&display=swap");
 
 @import "tailwindcss";
 @plugin "daisyui";
 
 :root {
   --color-base-100: rgb(255, 255, 255);
-  --color-base-200: rgb(245, 245, 247);
+  --color-base-200: rgb(236, 236, 236);
   --color-base-300: rgb(220, 220, 225);
   --color-primary: rgb(0, 32, 95);
   --color-secondary: rgb(224, 145, 54);
   --color-accent: rgb(83, 83, 83);
+}
+
+[data-theme="dark"] {
+  --color-base-100: #1a1a1a;       /* Deep dark background */
+  --color-base-200: #2c2c2c;       /* Slightly lighter than base-100 */
+  --color-base-300: #2e2e2e;       /* Card or section background */
+  
+  --color-primary: rgb(0, 57, 170);        /* Softened vibrant blue for dark mode */
+  --color-secondary: #ffb347;      /* Warm orange tone adapted for contrast */
+  --color-accent: #bbbbbb;         /* Light gray for text/icons */
 }
 
 /* headings font */

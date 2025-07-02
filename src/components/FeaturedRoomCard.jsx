@@ -7,7 +7,7 @@ const FeaturedRoomCard = ({ data }) => {
   const { image, title, description, price, reviews, _id } = data;
   return (
     <>
-      <div className="card bg-base-100 shadow-sm">
+      <div className="card bg-base-200 shadow-sm">
         <figure className="relative">
           <h1 className="bg-amber-700 px-5 rounded-2xl text-white absolute top-5 left-2">
             Top Rated

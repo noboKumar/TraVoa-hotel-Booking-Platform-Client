@@ -20,7 +20,7 @@ const OurFacilities = () => {
             alt="hotel-image"
           />
           {/* glass-2 */}
-          <div className="xl:glass md:bg-gray-200/50 text-gray-800 lg:w-full xl:w-fit xl:text-white px-5 xl:px-10 py-4 xl:py-5 rounded-2xl absolute bottom-0 xl:-bottom-10 xl:left-1/5 flex items-center gap-5">
+          <div className="xl:glass bg-gray-200/50 text-gray-800 lg:w-full xl:w-fit xl:text-white px-5 xl:px-10 py-4 xl:py-5 rounded-2xl absolute bottom-0 xl:-bottom-10 xl:left-1/5 flex items-center gap-5">
             <div className="text-center">
               <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold">
                 <CountUp end={120} duration={5} suffix="+" />
@@ -43,7 +43,7 @@ const OurFacilities = () => {
             alt="hotel-food-image"
           />
           {/* glass-2 */}
-          <div className="xl:glass md:bg-gray-200/50 text-gray-800 lg:w-full xl:w-fit xl:text-white px-5 xl:px-10 py-4 xl:py-5 rounded-2xl absolute bottom-0 xl:-bottom-10 xl:left-1/5 flex items-center gap-5">
+          <div className="xl:glass bg-gray-200/50 text-gray-800 lg:w-full xl:w-fit xl:text-white px-5 xl:px-10 py-4 xl:py-5 rounded-2xl absolute bottom-0 xl:-bottom-10 xl:left-1/5 flex items-center gap-5">
             <div className="text-center">
               <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold">
                 <CountUp end={105} duration={5} suffix="+" />
