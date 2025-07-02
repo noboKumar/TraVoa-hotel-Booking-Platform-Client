@@ -19,7 +19,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 const OurLocation = () => {
   const location = [23.7903, 90.4169];
   return (
-    <div>
+    <div className="pt-10">
       <PageTitle title={"Our Location"} logo={<IoLocationSharp />}></PageTitle>
       <div className="flex flex-col md:flex-row items-center gap-2 md:gap-5">
         <div className="lg:flex-1 w-full h-[400px]">

@@ -7,7 +7,7 @@ import CountUp from "react-countup";
 
 const OurFacilities = () => {
   return (
-    <div>
+    <div className="pt-10">
       <PageTitle
         title={"Our Facilities"}
         logo={<HiOutlineSparkles />}

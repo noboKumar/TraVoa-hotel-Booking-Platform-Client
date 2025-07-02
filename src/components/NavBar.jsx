@@ -52,7 +52,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="bg-base-200 shadow-sm sticky top-0 lg:top-2 z-20 lg:w-10/12 mx-auto lg:rounded-r-full lg:rounded-l-full lg:my-5">
+    <div className="bg-base-200 shadow-sm sticky top-0 xl:top-2 z-20 xl:w-10/12 mx-auto xl:rounded-r-full xl:rounded-l-full xl:my-5">
       <div className="navbar w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -84,7 +84,7 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-xl gap-5">
+          <ul className="menu menu-horizontal px-1 xl:text-xl gap-5">
             {navBarLinks}
           </ul>
         </div>

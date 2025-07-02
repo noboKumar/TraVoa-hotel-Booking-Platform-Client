@@ -26,7 +26,7 @@ const FeaturedRooms = () => {
     return <Loading></Loading>;
   }
   return (
-    <div>
+    <div className="pt-10">
       <div className="py-5">
         <PageTitle title={"Featured Rooms"} logo={<MdHotelClass />}></PageTitle>
       </div>

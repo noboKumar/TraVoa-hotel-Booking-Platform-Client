@@ -25,7 +25,7 @@ const Testimonial = () => {
     return <Loading></Loading>;
   }
   return (
-    <div>
+    <div className="pt-10">
       <PageTitle
         title={"What Our Client Say"}
         logo={<TbMessageCircle />}
