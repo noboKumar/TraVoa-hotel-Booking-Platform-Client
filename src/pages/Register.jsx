@@ -230,10 +230,11 @@ const Register = () => {
           <h1 className="text-xl">Or continue with</h1>
           <button
             onClick={handleGoogleLogIn}
-            className="btn bg-white text-black border-[#e5e5e5]"
+            className="btn bg-base-100 border-[#e5e5e5]"
           >
             <svg
               aria-label="Google logo"
+              className="rounded-2xl"
               width="16"
               height="16"
               xmlns="http://www.w3.org/2000/svg"
