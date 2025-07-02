@@ -30,7 +30,7 @@ const Testimonial = () => {
         title={"What Our Client Say"}
         logo={<TbMessageCircle />}
       ></PageTitle>
-      <div className="bg-gray-100 shadow-sm rounded-2xl px-10">
+      <div className="bg-base-200 shadow-sm rounded-2xl px-10">
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={50}
