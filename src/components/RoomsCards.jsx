@@ -6,7 +6,7 @@ const RoomsCards = ({ data }) => {
   const { image, available, title, description, price, reviews, _id } = data;
   return (
     <>
-      <div className="card bg-base-100 shadow-sm cursor-pointer transition-transform duration-300 hover:scale-105">
+      <div className="card bg-base-200 shadow-sm cursor-pointer transition-transform duration-300 hover:scale-105">
         <Link to={`/rooms/${_id}`}>
           <figure>
             <img
