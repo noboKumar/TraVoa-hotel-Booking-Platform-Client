@@ -13,7 +13,7 @@ import { Link } from "react-router";
 
 const AboutUs = () => {
   return (
-    <main className="min-h-screen text-base-content py-10 px-4 md:px-10 bg-gray-50">
+    <main className="min-h-screen text-base-content py-10 px-4 md:px-10 bg-base-200">
       <section className="max-w-5xl mx-auto">
         <div className="flex flex-col items-center gap-4 mb-10">
           <img src={logo} alt="TraVoa Logo" className="w-24 h-24" />

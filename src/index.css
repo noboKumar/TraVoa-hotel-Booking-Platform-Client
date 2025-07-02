@@ -17,7 +17,7 @@
   --color-base-200: #2c2c2c;       /* Slightly lighter than base-100 */
   --color-base-300: #2e2e2e;       /* Card or section background */
   
-  --color-primary: rgb(0, 57, 170);        /* Softened vibrant blue for dark mode */
+  --color-primary: rgb(0, 75, 226);        /* Softened vibrant blue for dark mode */
   --color-secondary: #ffb347;      /* Warm orange tone adapted for contrast */
   --color-accent: #bbbbbb;         /* Light gray for text/icons */
 }
