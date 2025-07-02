@@ -24,7 +24,7 @@ const Footer = () => {
   };
   return (
     <footer className="bg-base-200 mt-10">
-      <div className="footer lg:footer-horizontal text-base-content p-10 w-11/12 mx-auto">
+      <div className="footer xl:footer-horizontal text-base-content p-10 w-11/12 mx-auto">
         <aside>
           <div>
             <Logo></Logo>
