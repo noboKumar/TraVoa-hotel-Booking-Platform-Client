@@ -31,25 +31,36 @@ const NavBar = () => {
   );
 
   const handleLogOut = () => {
-    logOutUser()
-      .then(() => {
-        Swal.fire({
-          icon: "success",
-          title: "Logged Out Successfully",
-          text: `See you soon, ${user?.displayName}`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((err) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oh No! an Error occurred",
-          text: `${err.code}`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      });
+    Swal.fire({
+      title: "Are you sure you want to log out?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Log Out",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOutUser()
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "Logged Out Successfully",
+              text: `See you soon, ${user?.displayName}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch((err) => {
+            Swal.fire({
+              icon: "error",
+              title: "Oh No! an Error occurred",
+              text: `${err.code}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          });
+      }
+    });
   };
 
   return (
@@ -90,17 +101,17 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-4 z-10">
+          <ThemeController></ThemeController>
           {user && (
             <div
-            className="avatar tooltip tooltip-bottom"
-            data-tip={`${user.displayName}`}
+              className="avatar tooltip tooltip-bottom"
+              data-tip={`${user.displayName}`}
             >
               <div className="w-12 md:w-15 rounded-full">
                 <img src={user.photoURL} />
               </div>
             </div>
           )}
-          <ThemeController></ThemeController>
           {user ? (
             <button onClick={handleLogOut} className="btn btn-primary">
               Log Out

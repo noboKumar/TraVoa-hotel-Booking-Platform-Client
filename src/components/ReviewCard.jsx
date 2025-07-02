@@ -6,7 +6,7 @@ const ReviewCard = ({ review }) => {
   const { reviewerImage, reviewerName, comment, rating, timeStamp } = review;
   const postTime = moment(timeStamp).format("DD/MM/YYYY");
   return (
-    <div className="border-2 bg-gray-100 border-gray-300 shadow-sm rounded-2xl my-5 p-5 space-y-2">
+    <div className="border-2 bg-base-200 border-gray-300 shadow-sm rounded-2xl my-5 p-5 space-y-2">
       <div className="flex gap-4 items-center">
         <div className="avatar">
           <div className="w-24 rounded-full border-2">
