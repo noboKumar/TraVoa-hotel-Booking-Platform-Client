@@ -13,13 +13,12 @@
 }
 
 [data-theme="dark"] {
-  --color-base-100: #1a1a1a;       /* Deep dark background */
-  --color-base-200: #2c2c2c;       /* Slightly lighter than base-100 */
-  --color-base-300: #2e2e2e;       /* Card or section background */
-  
-  --color-primary: rgb(0, 75, 226);        /* Softened vibrant blue for dark mode */
-  --color-secondary: #ad7930;      /* Warm orange tone adapted for contrast */
-  --color-accent: #bbbbbb;         /* Light gray for text/icons */
+  --color-base-100: #1a1a1a;
+  --color-base-200: #2c2c2c;
+  --color-base-300: #2e2e2e;
+  --color-primary: rgb(0, 75, 226);
+  --color-secondary: #ad7930;
+  --color-accent: #bbbbbb;
 }
 
 /* headings font */
