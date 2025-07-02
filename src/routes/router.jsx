@@ -11,6 +11,7 @@ import RoomDetails from "../pages/RoomDetails";
 import { apiClient } from "../API/apiClient";
 import Loading from "../components/Loading";
 import ContactUs from "../pages/ContactUs";
+import AboutUs from "../pages/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -52,8 +53,12 @@ export const router = createBrowserRouter([
         hydrateFallbackElement: <Loading></Loading>,
       },
       {
-        path: "contactUs",
+        path: "contact-us",
         Component: ContactUs,
+      },
+      {
+        path: "/about-us",
+        Component: AboutUs,
       },
     ],
   },

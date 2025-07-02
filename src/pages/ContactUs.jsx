@@ -30,7 +30,7 @@ const ContactUs = () => {
   return (
     <section className="py-12 bg-base-200">
       <div className="max-w-lg mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-6 text-primary">Contact Us</h2>
+        <h2 className="text-3xl font-bold mb-6 text-primary">Contact us</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             className="input input-bordered w-full"
