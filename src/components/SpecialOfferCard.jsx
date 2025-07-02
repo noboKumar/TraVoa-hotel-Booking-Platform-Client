@@ -12,7 +12,7 @@ const SpecialOfferCard = ({ data }) => {
     discount_rate,
   } = data;
   return (
-    <div className="shadow-sm rounded-2xl ">
+    <div className="shadow-sm rounded-2xl bg-base-200">
       <div className="relative">
         <img
           className="w-full h-[300px] object-cover rounded-t-2xl"
