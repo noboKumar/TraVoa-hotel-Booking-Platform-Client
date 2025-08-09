@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "*",
-        Component: ErrorPage,
+        element: <ErrorPage></ErrorPage>
       },
       {
         path: "/rooms",
@@ -51,6 +51,7 @@ export const router = createBrowserRouter([
         Component: RoomDetails,
         loader: ({ params }) => apiClient.get(`/rooms/${params.id}`),
         hydrateFallbackElement: <Loading></Loading>,
+        errorElement: <ErrorPage></ErrorPage>
       },
       {
         path: "contact-us",
