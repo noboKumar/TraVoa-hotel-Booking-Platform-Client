@@ -9,7 +9,7 @@ const ReviewModal = ({ _id }) => {
   const { user } = useAuth();
   const [ratingValue, setRatingValue] = useState(0);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const reviewerName = form.name.value;
@@ -26,23 +26,42 @@ const ReviewModal = ({ _id }) => {
       timeStamp,
     };
 
-    apiClient
-      .patch(`/review/${_id}`, reviewInfo)
-      .then(() => {})
-      .catch((err) => console.log(err));
+    try {
+      const token = await user.getIdToken();
 
-    apiClient
-      .post("/allReview", reviewInfo)
-      .then(() => {})
-      .catch((err) => console.log(err));
+      apiClient
+        .patch(`/review/${_id}?email=${user?.email}`, reviewInfo, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(() => {})
+        .catch((err) => console.log(err));
 
-    document.getElementById(`book_now_modal_${_id}`).close();
-    Swal.fire({
-      icon: "success",
-      title: "Review submitted successfully!",
-      showConfirmButton: false,
-      timer: 1500,
-    });
+      apiClient
+        .post(`/allReview?email=${user?.email}`, reviewInfo, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(() => {})
+        .catch((err) => console.log(err));
+
+      document.getElementById(`book_now_modal_${_id}`).close();
+      Swal.fire({
+        icon: "success",
+        title: "Review submitted successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      console.error("Review submit error:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Failed to submit review",
+        text: error.message,
+      });
+    }
   };
 
   return (
