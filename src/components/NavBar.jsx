@@ -64,7 +64,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="bg-base-200 shadow-sm sticky top-1 my-5 z-20 w-11/12 mx-auto rounded-full px-5 border-b-2 border-primary/10">
+    <div className="bg-base-200 shadow-sm sticky md:top-1 md:my-5 z-20 md:w-11/12 mx-auto md:rounded-full px-5 border-b-2 border-primary/10">
       <div className="navbar py-0">
         <div className="navbar-start">
           <div className="dropdown">
@@ -100,7 +100,7 @@ const NavBar = () => {
             {navBarLinks}
           </ul>
         </div>
-        <div className="navbar-end gap-4 z-10">
+        <div className="navbar-end md:gap-4 gap-1 z-10">
           <ThemeController></ThemeController>
           {user && (
             <div
@@ -113,7 +113,10 @@ const NavBar = () => {
             </div>
           )}
           {user ? (
-            <button onClick={handleLogOut} className="btn btn-primary">
+            <button
+              onClick={handleLogOut}
+              className="btn btn-primary bg-red-600 border-red-600 hover:bg-red-700 text-white rounded-2xl md:rounded"
+            >
               Log Out
             </button>
           ) : (
