@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useLoaderData, useNavigate } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
+import { useQuery } from "@tanstack/react-query";
 import RoomFacility from "../components/RoomFacility";
 import { TbCurrencyTaka } from "react-icons/tb";
 import BookNowModal from "../components/BookNowModal";
@@ -8,12 +9,38 @@ import ReviewCard from "../components/ReviewCard";
 import useAuth from "../hooks/useAuth";
 import { Rating, StickerStar } from "@smastrom/react-rating";
 import ReviewModal from "../components/ReviewModal";
+import { apiClient } from "../API/apiClient";
+import Loading from "../components/Loading";
 
 const RoomDetails = () => {
   const { user } = useAuth();
-  const { data } = useLoaderData();
+  const { id } = useParams();
   const navigate = useNavigate();
-  const { image, available, title, description, price, reviews, _id } = data;
+
+  const {
+    data: roomData,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["room", id],
+    queryFn: async () => {
+      const res = await apiClient.get(`/rooms/${id}`);
+      return res.data;
+    },
+  });
+
+  if (isLoading) return <Loading />;
+  if (error) return <ErrorPage />;
+
+  const {
+    image,
+    available,
+    title,
+    description,
+    price,
+    reviews = [],
+    _id,
+  } = roomData;
 
   const handleBookNow = () => {
     if (!user) {
@@ -34,46 +61,50 @@ const RoomDetails = () => {
           <MdKeyboardBackspace className="border-2 rounded-full bg-base-200" />
         </div>
       </Link>
+
       <img
         className="w-full md:h-[500px] object-cover object-center rounded-2xl shadow-sm"
         src={image}
         alt="room image"
       />
+
       <h1 className="text-3xl text-primary marcellus font-semibold">
         {title}{" "}
         <div className="badge badge-secondary text-white">
           {available ? "available" : "unavailable"}
         </div>
       </h1>
+
       <div className="flex items-center gap-2">
-        <div>
-          <Rating
-            style={{ maxWidth: 120 }}
-            value={5}
-            readOnly
-            itemStyles={{
-              itemShapes: StickerStar,
-              activeFillColor: "#f59e0b",
-              inactiveFillColor: "#ffedd5",
-            }}
-          />
-        </div>
-        <p className="text-xl">({reviews?.length} Reviews)</p>
+        <Rating
+          style={{ maxWidth: 120 }}
+          value={5}
+          readOnly
+          itemStyles={{
+            itemShapes: StickerStar,
+            activeFillColor: "#f59e0b",
+            inactiveFillColor: "#ffedd5",
+          }}
+        />
+        <p className="text-xl">({reviews.length} Reviews)</p>
       </div>
+
       <div className="flex items-center text-xl text-accent">
         <TbCurrencyTaka size={25} />
         <span className="text-secondary">{price}</span>/night
       </div>
-      <RoomFacility></RoomFacility>
+
+      <RoomFacility />
       <p className="text-xl flex flex-col lg:w-4/6">
         <span className="text-2xl font-semibold marcellus">Description:</span>
         {description}
       </p>
+
       <div className="space-x-5">
         <button onClick={handleBookNow} className="btn btn-primary">
           Book Now
         </button>
-        {user?.email && data?.bookedUser === user.email && (
+        {user?.email && roomData?.bookedUser === user.email && (
           <button
             onClick={handleReview}
             className="btn btn-secondary text-white"
@@ -82,29 +113,30 @@ const RoomDetails = () => {
           </button>
         )}
       </div>
+
       <div className="space-y-2">
         <h1 className="text-4xl font-semibold marcellus">Reviews:</h1>
         <div>
           {reviews.length ? (
             reviews.map((review, index) => (
-              <ReviewCard key={index} review={review}></ReviewCard>
+              <ReviewCard key={index} review={review} />
             ))
           ) : (
             <h1 className="text-xl bg-gray-100 shadow-sm w-fit rounded-2xl py-2 px-4">
-              "No reviews yet be the first to share your thoughts and help
-              others discover something great!"
+              "No reviews yet — be the first to share your thoughts!"
             </h1>
           )}
         </div>
       </div>
-      <ReviewModal _id={_id}></ReviewModal>
+
+      <ReviewModal _id={_id} />
       <BookNowModal
         title={title}
         description={description}
         price={price}
         available={available}
         _id={_id}
-      ></BookNowModal>
+      />
     </div>
   );
 };
